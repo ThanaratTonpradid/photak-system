@@ -4,36 +4,23 @@
 <head>
   <title>Dashboard - Equipment Maintenance Notification System</title>
   <?php include './components/head.php'; ?>
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
 </head>
 
 <body>
-  <div class="wrapper">
-    <?php include './components/header.php'; ?>
-    <?php include './components/sidebar.php'; ?>
-
-    <div class="main-panel">
-      <div class="container">
-        <div class="panel-header bg-primary-gradient">
-          <div class="page-inner py-5">
-            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-              <div>
-                <h2 class="text-white pb-2 fw-bold">Dashboard</h2>
-              </div>
-              <div class="ml-md-auto py-2 py-md-0">
-                <!-- <a href="#" class="btn btn-white btn-border btn-round mr-2">Manage</a> -->
-                <!-- <a href="#" class="btn btn-secondary btn-round">Add Customer</a> -->
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="page-inner mt--5">
-          <!-- content here -->
-        </div>
+  <?php include './components/header.php'; ?>
+  <div class="container-fluid">
+    <div class="row">
+      <?php include './components/sidebar.php'; ?>
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
       </div>
+    </main>
     </div>
   </div>
   <?php include './components/footer-script.php'; ?>
-
+  <script src="./assets/js/dashboard.js"></script></body>
 </body>
 
 </html>
