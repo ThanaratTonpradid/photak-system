@@ -20,7 +20,6 @@
     </div>
   </div>
   <?php include './components/footer-script.php'; ?>
-  <script src="./assets/js/dashboard.js"></script></body>
 </body>
 
 </html>
