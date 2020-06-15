@@ -45,6 +45,28 @@
           <span data-feather="shopping-cart"></span>
           ระบบจัดการวัสดุ-ครุภัณฑ์
         </a>
+        <ul class="nav flex-column ml-5 collapse" id="product-submenu" aria-labelledby="product-menu" data-parent="#sidebarMenu">
+          <li class="nav-item">
+            <a id="material-type-page" class="nav-link" href="/pages/material-type.php">
+              ประเภทวัสดุคอมพิวเตอร์
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="product-type-page" class="nav-link" href="/pages/product-type.php">
+              ประเภทครุภัณฑ์คอมพิวเตอร์
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="material-page" class="nav-link" href="/pages/material.php">
+              จัดการวัสดุคอมพิวเตอร์
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="product-page" class="nav-link" href="/pages/product.php">
+              จัดการครุภัณฑ์คอมพิวเตอร์
+            </a>
+          </li>
+        </ul>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="repair-menu" role="button" data-toggle="collapse" data-target="#repair-submenu" aria-expanded="false" aria-controls="repair-submenu">
