@@ -325,7 +325,7 @@
     </div>
   </div>
   <?php include '../components/footer-script.php'; ?>
-  <script src="../assets/js/employee-page.js"></script>
+  <script src="../assets/js/employee-script.js"></script>
 </body>
 
 </html>

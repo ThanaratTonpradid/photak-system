@@ -147,7 +147,7 @@
     </div>
   </div>
   <?php include '../components/footer-script.php'; ?>
-  <script src="../assets/js/department-page.js"></script>
+  <script src="../assets/js/department-script.js"></script>
 </body>
 
 </html>

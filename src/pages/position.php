@@ -147,7 +147,7 @@
     </div>
   </div>
   <?php include '../components/footer-script.php'; ?>
-  <script src="../assets/js/position-page.js"></script>
+  <script src="../assets/js/position-script.js"></script>
 </body>
 
 </html>
