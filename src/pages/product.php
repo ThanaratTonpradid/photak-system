@@ -257,9 +257,10 @@
             <div class="col-md-4 mb-3">
               <label class="pt-0">รูป</label>
               <div class="custom-file">
-                <input type="file" class="custom-file-input" id="customFile" required>
-                <label class="custom-file-label" for="customFile">เลือกไฟล์...</label>
+                <input type="file" class="custom-file-input" id="customFileCreate" lang="th">
+                <label class="custom-file-label create" for="customFileCreate">เลือกไฟล์...</label>
               </div>
+              <img id='create-file-preview' class="img-thumbnail w-50 d-none" />
             </div>
           </div>
           <button id="cancel-save-btn" class="btn btn-secondary" type="button">ยกเลิก</button>
@@ -357,9 +358,10 @@
             <div class="col-md-4 mb-3">
               <label class="pt-0">รูป</label>
               <div class="custom-file">
-                <input type="file" class="custom-file-input" id="customFile" required>
-                <label class="custom-file-label" for="customFile">เลือกไฟล์...</label>
+                <input type="file" class="custom-file-input" id="customFileEdit" lang="th">
+                <label class="custom-file-label edit" for="customFileEdit">เลือกไฟล์...</label>
               </div>
+              <img id='edit-file-preview' class="img-thumbnail w-50 d-none" />
             </div>
           </div>
           <button id="cancel-edit-btn" class="btn btn-secondary" type="button">ยกเลิก</button>
