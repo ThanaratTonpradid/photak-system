@@ -172,8 +172,8 @@
         <form>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">หมายเลขครุภัณฑ์</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="validateNumber">หมายเลขครุภัณฑ์</label>
+              <input type="text" class="form-control" id="validateNumber" required>
             </div>
           </div>
           <div class="form-row">
@@ -184,20 +184,20 @@
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">ยี่ห้อ</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="validateBrand">ยี่ห้อ</label>
+              <input type="text" class="form-control" id="validateBrand" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">รุ่น</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="validateSeries">รุ่น</label>
+              <input type="text" class="form-control" id="validateSeries" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">รายละเอียด</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="validateDetail">รายละเอียด</label>
+              <input type="text" class="form-control" id="validateDetail" required>
             </div>
           </div>
           <div class="form-row">
@@ -227,8 +227,8 @@
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateType">รหัสผู้รับผิดชอบ</label>
-              <select class="form-control" id="validateType" required>
+              <label for="validateStaff">รหัสผู้รับผิดชอบ</label>
+              <select class="form-control" id="validateStaff" required>
                 <option selected disabled value="">เลือกรหัสผู้รับผิดชอบ...</option>
                 <option>1</option>
                 <option>2</option>
@@ -271,10 +271,10 @@
       <div class="edit-product-form d-none">
         <h4>แก้ไขครุภัณฑ์คอมพิวเตอร์</h4>
         <form>
-        <div class="form-row">
+          <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">หมายเลขครุภัณฑ์</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="validateNumber">หมายเลขครุภัณฑ์</label>
+              <input type="text" class="form-control" id="validateNumber" required>
             </div>
           </div>
           <div class="form-row">
@@ -285,20 +285,20 @@
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">ยี่ห้อ</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="validateBrand">ยี่ห้อ</label>
+              <input type="text" class="form-control" id="validateBrand" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">รุ่น</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="validateSeries">รุ่น</label>
+              <input type="text" class="form-control" id="validateSeries" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">รายละเอียด</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="validateDetail">รายละเอียด</label>
+              <input type="text" class="form-control" id="validateDetail" required>
             </div>
           </div>
           <div class="form-row">
@@ -328,8 +328,8 @@
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateType">รหัสผู้รับผิดชอบ</label>
-              <select class="form-control" id="validateType" required>
+              <label for="validateStaff">รหัสผู้รับผิดชอบ</label>
+              <select class="form-control" id="validateStaff" required>
                 <option selected disabled value="">เลือกรหัสผู้รับผิดชอบ...</option>
                 <option>1</option>
                 <option>2</option>
