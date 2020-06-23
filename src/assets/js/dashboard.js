@@ -53,6 +53,27 @@ $(function() {
   } else if (pathname === '/pages/mat-with-approve.php') {
     $('#mat-with-approve-page').addClass('active')
     $('#material-submenu').collapse('show')
+  } else if (pathname === '/pages/product-report.php') {
+    $('#product-report-page').addClass('active')
+    $('#report-submenu').collapse('show')
+  } else if (pathname === '/pages/product-history-report.php') {
+    $('#product-history-report-page').addClass('active')
+    $('#report-submenu').collapse('show')
+  } else if (pathname === '/pages/product-repair-report.php') {
+    $('#product-repair-report-page').addClass('active')
+    $('#report-submenu').collapse('show')
+  } else if (pathname === '/pages/product-inactive-report.php') {
+    $('#product-inactive-report-page').addClass('active')
+    $('#report-submenu').collapse('show')
+  } else if (pathname === '/pages/mat-with-report.php') {
+    $('#mat-with-report-page').addClass('active')
+    $('#report-submenu').collapse('show')
+  } else if (pathname === '/pages/mat-use-report.php') {
+    $('#mat-use-report-page').addClass('active')
+    $('#report-submenu').collapse('show')
+  } else if (pathname === '/pages/mat-with-approve-report.php') {
+    $('#mat-with-approve-report-page').addClass('active')
+    $('#report-submenu').collapse('show')
   } else {
     $('#home-menu').addClass('active')
   }

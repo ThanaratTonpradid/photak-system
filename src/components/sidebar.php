@@ -119,6 +119,43 @@
           <span data-feather="layers"></span>
           ระบบรายงาน
         </a>
+        <ul class="nav flex-column ml-5 collapse" id="report-submenu" aria-labelledby="report-menu" data-parent="#sidebarMenu">
+          <li class="nav-item">
+            <a id="product-report-page" class="nav-link" href="/pages/product-report.php">
+              รายงานทะเบียนครุภัณฑ์
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="product-history-report-page" class="nav-link" href="/pages/product-history-report.php">
+              รายงานประวัติครุภัณฑ์
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="product-repair-report-page" class="nav-link" href="/pages/product-repair-report.php">
+              รายงานแจ้งซ่อมครุภัณฑ์
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="product-inactive-report-page" class="nav-link" href="/pages/product-inactive-report.php">
+              รายงานจำหน่ายซ่อมครุภัณฑ์
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="mat-with-report-page" class="nav-link" href="/pages/mat-with-report.php">
+              รายงานการเบิกวัสดุ
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="mat-use-report-page" class="nav-link" href="/pages/mat-use-report.php">
+              รายงานใช้วัสดุ
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="mat-with-approve-report-page" class="nav-link" href="/pages/mat-with-approve-report.php">
+              รายงานอนุมัติการเบิกวัสดุ
+            </a>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>
