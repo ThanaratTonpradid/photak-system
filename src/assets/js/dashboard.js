@@ -47,6 +47,12 @@ $(function() {
   } else if (pathname === '/pages/finish-repair.php') {
     $('#finish-repair-page').addClass('active')
     $('#repair-submenu').collapse('show')
+  } else if (pathname === '/pages/mat-with.php') {
+    $('#mat-with-page').addClass('active')
+    $('#material-submenu').collapse('show')
+  } else if (pathname === '/pages/mat-with-approve.php') {
+    $('#mat-with-approve-page').addClass('active')
+    $('#material-submenu').collapse('show')
   } else {
     $('#home-menu').addClass('active')
   }

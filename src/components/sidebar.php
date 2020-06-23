@@ -101,6 +101,18 @@
           <span data-feather="bar-chart-2"></span>
           ระบบเบิกวัสดุ
         </a>
+        <ul class="nav flex-column ml-5 collapse" id="material-submenu" aria-labelledby="material-menu" data-parent="#sidebarMenu">
+          <li class="nav-item">
+            <a id="mat-with-page" class="nav-link" href="/pages/mat-with.php">
+              ใบเบิกวัสดุ
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="mat-with-approve-page" class="nav-link" href="/pages/mat-with-approve.php">
+              อนุมัติใบเบิกวัสดุ
+            </a>
+          </li>
+        </ul>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="report-menu" role="button" data-toggle="collapse" data-target="#report-submenu" aria-expanded="false" aria-controls="report-submenu">
