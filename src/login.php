@@ -14,7 +14,8 @@
     <input type="text" id="inputUsername" class="form-control" placeholder="ชื่อผู้ใช้" required autofocus>
     <label for="inputPassword" class="sr-only">รหัสผ่าน</label>
     <input type="password" id="inputPassword" class="form-control" placeholder="รหัสผ่าน" required>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">เข้าสู่ระบบ</button>
+    <!-- <button class="btn btn-lg btn-primary btn-block" type="submit">เข้าสู่ระบบ</button> -->
+    <a class="btn btn-lg btn-primary btn-block" href="/index.php" role="button">เข้าสู่ระบบ</a>
   </form>
   <?php include './components/footer-script.php'; ?>
 </body>
