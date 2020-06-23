@@ -189,8 +189,8 @@
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateStaff">ผู้แจ้ง</label>
-              <input type="text" class="form-control" id="validateStaff" readonly>
+              <label for="notifyStaff">ผู้แจ้ง</label>
+              <input type="text" class="form-control" id="notifyStaff" readonly>
             </div>
           </div>
           <div class="form-row">
@@ -273,8 +273,8 @@
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateStaff">ผู้แจ้ง</label>
-              <input type="text" class="form-control" id="validateStaff" readonly>
+              <label for="notifyStaff">ผู้แจ้ง</label>
+              <input type="text" class="form-control" id="notifyStaff" readonly>
             </div>
           </div>
           <div class="form-row">
