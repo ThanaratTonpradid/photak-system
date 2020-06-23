@@ -161,20 +161,20 @@
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="dayAssign">วันที่แจ้ง</label>
-              <input type="date" class="form-control" id="dayAssign" name="dayAssign" readonly>
+              <label for="dayStart">วันที่แจ้ง</label>
+              <input type="date" class="form-control" id="dayStart" name="dayStart" readonly>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="detailAssign">รายละเอียด</label>
-              <textarea class="form-control" id="detailAssign" rows="3" readonly></textarea>
+              <label for="detailStart">รายละเอียด</label>
+              <textarea class="form-control" id="detailStart" rows="3" readonly></textarea>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateStaff">ผู้แจ้ง</label>
-              <input type="text" class="form-control" id="validateStaff" readonly>
+              <label for="notifyStaff">ผู้แจ้ง</label>
+              <input type="text" class="form-control" id="notifyStaff" readonly>
             </div>
           </div>
           <div class="form-row">
@@ -223,20 +223,20 @@
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="dayAssign">วันที่แจ้ง</label>
-              <input type="date" class="form-control" id="dayAssign" name="dayAssign" readonly>
+              <label for="dayStart">วันที่แจ้ง</label>
+              <input type="date" class="form-control" id="dayStart" name="dayStart" readonly>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="detailAssign">รายละเอียด</label>
-              <textarea class="form-control" id="detailAssign" rows="3" readonly></textarea>
+              <label for="detailStart">รายละเอียด</label>
+              <textarea class="form-control" id="detailStart" rows="3" readonly></textarea>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateStaff">ผู้แจ้ง</label>
-              <input type="text" class="form-control" id="validateStaff" readonly>
+              <label for="notifyStaff">ผู้แจ้ง</label>
+              <input type="text" class="form-control" id="notifyStaff" readonly>
             </div>
           </div>
           <div class="form-row">

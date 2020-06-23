@@ -153,20 +153,20 @@
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="dayApprove">วันที่แจ้ง</label>
-              <input type="date" class="form-control" id="dayApprove" name="dayApprove" readonly>
+              <label for="dayStart">วันที่แจ้ง</label>
+              <input type="date" class="form-control" id="dayStart" name="dayStart" readonly>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="detailApprove">รายละเอียด</label>
-              <textarea class="form-control" id="detailApprove" rows="3" readonly></textarea>
+              <label for="detailStart">รายละเอียด</label>
+              <textarea class="form-control" id="detailStart" rows="3" readonly></textarea>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateStaff">ผู้แจ้ง</label>
-              <input type="text" class="form-control" id="validateStaff" readonly>
+              <label for="notifyStaff">ผู้แจ้ง</label>
+              <input type="text" class="form-control" id="notifyStaff" readonly>
             </div>
           </div>
           <div class="form-row">
@@ -188,8 +188,8 @@
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateStaff">ผู้อนุมัติ</label>
-              <select class="form-control" id="validateStaff" required>
+              <label for="approveStaff">ผู้อนุมัติ</label>
+              <select class="form-control" id="approveStaff" required>
                 <option selected disabled value="">เลือกผู้อนุมัติ...</option>
                 <option>1</option>
                 <option>2</option>
@@ -215,20 +215,20 @@
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="dayApprove">วันที่แจ้ง</label>
-              <input type="date" class="form-control" id="dayApprove" name="dayApprove" readonly>
+              <label for="dayStart">วันที่แจ้ง</label>
+              <input type="date" class="form-control" id="dayStart" name="dayStart" readonly>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="detailApprove">รายละเอียด</label>
-              <textarea class="form-control" id="detailApprove" rows="3" readonly></textarea>
+              <label for="detailStart">รายละเอียด</label>
+              <textarea class="form-control" id="detailStart" rows="3" readonly></textarea>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateStaff">ผู้แจ้ง</label>
-              <input type="text" class="form-control" id="validateStaff" readonly>
+              <label for="notifyStaff">ผู้แจ้ง</label>
+              <input type="text" class="form-control" id="notifyStaff" readonly>
             </div>
           </div>
           <div class="form-row">
@@ -250,8 +250,8 @@
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateStaff">ผู้อนุมัติ</label>
-              <select class="form-control" id="validateStaff" required>
+              <label for="approveStaff">ผู้อนุมัติ</label>
+              <select class="form-control" id="approveStaff" required>
                 <option selected disabled value="">เลือกผู้อนุมัติ...</option>
                 <option>1</option>
                 <option>2</option>

@@ -144,20 +144,20 @@
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="dayNotify">วันที่แจ้ง</label>
-              <input type="date" class="form-control" id="dayNotify" name="dayNotify" required>
+              <label for="dayStart">วันที่แจ้ง</label>
+              <input type="date" class="form-control" id="dayStart" name="dayStart" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="detailNotify">รายละเอียด</label>
-              <textarea class="form-control" id="detailNotify" rows="3" required></textarea>
+              <label for="detailStart">รายละเอียด</label>
+              <textarea class="form-control" id="detailStart" rows="3" required></textarea>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateStaff">ผู้แจ้ง</label>
-              <select class="form-control" id="validateStaff" required>
+              <label for="notifyStaff">ผู้แจ้ง</label>
+              <select class="form-control" id="notifyStaff" required>
                 <option selected disabled value="">เลือกผู้แจ้ง...</option>
                 <option>1</option>
                 <option>2</option>
@@ -193,20 +193,20 @@
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="dayNotify">วันที่แจ้ง</label>
-              <input type="date" class="form-control" id="dayNotify" name="dayNotify" required>
+              <label for="dayStart">วันที่แจ้ง</label>
+              <input type="date" class="form-control" id="dayStart" name="dayStart" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="detailNotify">รายละเอียด</label>
-              <textarea class="form-control" id="detailNotify" rows="3" required></textarea>
+              <label for="detailStart">รายละเอียด</label>
+              <textarea class="form-control" id="detailStart" rows="3" required></textarea>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateStaff">ผู้แจ้ง</label>
-              <select class="form-control" id="validateStaff" required>
+              <label for="notifyStaff">ผู้แจ้ง</label>
+              <select class="form-control" id="notifyStaff" required>
                 <option selected disabled value="">เลือกผู้แจ้ง...</option>
                 <option>1</option>
                 <option>2</option>
