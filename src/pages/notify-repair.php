@@ -34,7 +34,6 @@
               <th>วันที่แจ้ง</th>
               <th>ผู้แจ้ง</th>
               <th>รูปภาพ</th>
-              <th>สถานะการซ่อม</th>
               <th></th>
             </tr>
           </thead>
@@ -42,7 +41,6 @@
             <tr>
               <td>1,001</td>
               <td>Lorem</td>
-              <td>ipsum</td>
               <td>ipsum</td>
               <td>ipsum</td>
               <td>ipsum</td>
@@ -61,7 +59,6 @@
               <td>consectetur</td>
               <td>consectetur</td>
               <td>consectetur</td>
-              <td>consectetur</td>
               <td>
                 <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
                 <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteNotifyRepairDialog"><span data-feather="trash-2"></button>
@@ -70,7 +67,6 @@
             <tr>
               <td>1,003</td>
               <td>Integer</td>
-              <td>nec</td>
               <td>nec</td>
               <td>nec</td>
               <td>nec</td>
@@ -89,7 +85,6 @@
               <td>Sed</td>
               <td>Sed</td>
               <td>Sed</td>
-              <td>Sed</td>
               <td>
                 <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
                 <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteNotifyRepairDialog"><span data-feather="trash-2"></button>
@@ -98,7 +93,6 @@
             <tr>
               <td>1,004</td>
               <td>dapibus</td>
-              <td>diam</td>
               <td>diam</td>
               <td>diam</td>
               <td>diam</td>
@@ -117,7 +111,6 @@
               <td>quis</td>
               <td>quis</td>
               <td>quis</td>
-              <td>quis</td>
               <td>
                 <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
                 <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteNotifyRepairDialog"><span data-feather="trash-2"></button>
@@ -126,7 +119,6 @@
             <tr>
               <td>1,006</td>
               <td>nibh</td>
-              <td>elementum</td>
               <td>elementum</td>
               <td>elementum</td>
               <td>elementum</td>
