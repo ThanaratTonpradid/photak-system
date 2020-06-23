@@ -73,6 +73,28 @@
           <span data-feather="users"></span>
           ระบบแจ้งซ่อม
         </a>
+        <ul class="nav flex-column ml-5 collapse" id="repair-submenu" aria-labelledby="repair-menu" data-parent="#sidebarMenu">
+          <li class="nav-item">
+            <a id="notify-repair-page" class="nav-link" href="/pages/notify-repair.php">
+              จัดการใบแจ้งซ่อม
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="approve-repair-page" class="nav-link" href="/pages/approve-repair.php">
+              อนุมัติใบแจ้งซ่อม
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="assign-repair-page" class="nav-link" href="/pages/assign-repair.php">
+              กำหนดผู้รับผิดชอบใบแจ้งซ่อม
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="finish-repair-page" class="nav-link" href="/pages/finish-repair.php">
+              บันทึกใบแจ้งซ่อม
+            </a>
+          </li>
+        </ul>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="material-menu" role="button" data-toggle="collapse" data-target="#material-submenu" aria-expanded="false" aria-controls="material-submenu">

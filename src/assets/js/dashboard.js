@@ -35,6 +35,18 @@ $(function() {
   } else if (pathname === '/pages/product.php') {
     $('#product-page').addClass('active')
     $('#product-submenu').collapse('show')
+  } else if (pathname === '/pages/notify-repair.php') {
+    $('#notify-repair-page').addClass('active')
+    $('#repair-submenu').collapse('show')
+  } else if (pathname === '/pages/approve-repair.php') {
+    $('#approve-repair-page').addClass('active')
+    $('#repair-submenu').collapse('show')
+  } else if (pathname === '/pages/assign-repair.php') {
+    $('#assign-repair-page').addClass('active')
+    $('#repair-submenu').collapse('show')
+  } else if (pathname === '/pages/finish-repair.php') {
+    $('#finish-repair-page').addClass('active')
+    $('#repair-submenu').collapse('show')
   } else {
     $('#home-menu').addClass('active')
   }
