@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>จัดการอนุมัติใบแจ้งซ่อม - ระบบแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์</title>
+  <title>อนุมัติใบแจ้งซ่อม - ระบบแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์</title>
   <?php include '../components/head.php'; ?>
   <link rel="stylesheet" href="../../assets/css/dashboard.css">
 </head>
