@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>รายงานทะเบียน - ระบบแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์</title>
+  <title>รายงานประวัติครุภัณฑ์คอมพิวเตอร์ - ระบบแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์</title>
   <?php include '../components/head.php'; ?>
   <link rel="stylesheet" href="../../assets/css/dashboard.css">
 </head>
@@ -14,16 +14,22 @@
       <?php include '../components/sidebar.php'; ?>
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-center flex-wrap flex-column align-items-center pt-3 pb-2 mb-3">
-          <h3>รายงานทะเบียน</h3>
+          <h3>รายงานประวัติครุภัณฑ์คอมพิวเตอร์</h3>
           <h4>โรงพยาบาลโพธิ์ตาก</h4>
-          <!-- <form>
+          <form>
             <div class="form-group row">
               <label for="inputPassword" class="col-sm-3 col-form-label">ณ วันที่</label>
               <div class="col-sm-9">
                 <input type="date" class="form-control" id="inputPassword">
               </div>
             </div>
-          </form> -->
+            <div class="form-group row">
+              <label for="inputPassword" class="col-sm-3 col-form-label">ณ วันที่</label>
+              <div class="col-sm-9">
+                <input type="date" class="form-control" id="inputPassword">
+              </div>
+            </div>
+          </form>
         </div>
         <div class="table-responsive">
           <table class="table table-striped table-sm">
