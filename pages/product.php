@@ -4,7 +4,7 @@
 <head>
   <title>จัดการครุภัณฑ์คอมพิวเตอร์ - ระบบแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์</title>
   <?php include '../components/head.php'; ?>
-  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="/photak-system/assets/css/dashboard.css">
 </head>
 
 <body>
@@ -216,7 +216,7 @@
             <div class="col-md-4 mb-3">
               <label for="validateType">ประเภทครุภัณฑ์</label>
               <select class="form-control" id="validateType" required>
-                <option selected disabled value="">เลือกประเภทครุภัณฑ์...</option>
+                <option selected disabled value="">เลือกประเภทครุภัณฑ์/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -229,7 +229,7 @@
             <div class="col-md-4 mb-3">
               <label for="validateStaff">รหัสผู้รับผิดชอบ</label>
               <select class="form-control" id="validateStaff" required>
-                <option selected disabled value="">เลือกรหัสผู้รับผิดชอบ...</option>
+                <option selected disabled value="">เลือกรหัสผู้รับผิดชอบ/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -258,7 +258,7 @@
               <label class="pt-0">รูป</label>
               <div class="custom-file">
                 <input type="file" class="custom-file-input" id="customFileCreate" lang="th">
-                <label class="custom-file-label create" for="customFileCreate">เลือกไฟล์...</label>
+                <label class="custom-file-label create" for="customFileCreate">เลือกไฟล์/photak-system.</label>
               </div>
               <img id='create-file-preview' class="img-thumbnail w-50 d-none" />
             </div>
@@ -317,7 +317,7 @@
             <div class="col-md-4 mb-3">
               <label for="validateType">ประเภทครุภัณฑ์</label>
               <select class="form-control" id="validateType" required>
-                <option selected disabled value="">เลือกประเภทครุภัณฑ์...</option>
+                <option selected disabled value="">เลือกประเภทครุภัณฑ์/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -330,7 +330,7 @@
             <div class="col-md-4 mb-3">
               <label for="validateStaff">รหัสผู้รับผิดชอบ</label>
               <select class="form-control" id="validateStaff" required>
-                <option selected disabled value="">เลือกรหัสผู้รับผิดชอบ...</option>
+                <option selected disabled value="">เลือกรหัสผู้รับผิดชอบ/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -359,7 +359,7 @@
               <label class="pt-0">รูป</label>
               <div class="custom-file">
                 <input type="file" class="custom-file-input" id="customFileEdit" lang="th">
-                <label class="custom-file-label edit" for="customFileEdit">เลือกไฟล์...</label>
+                <label class="custom-file-label edit" for="customFileEdit">เลือกไฟล์/photak-system.</label>
               </div>
               <img id='edit-file-preview' class="img-thumbnail w-50 d-none" />
             </div>
@@ -380,7 +380,7 @@
               </button>
             </div>
             <div class="modal-body">
-              ท่านต้องการลบข้อมูล ... หรือไม่
+              ท่านต้องการลบข้อมูล /photak-system. หรือไม่
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
@@ -393,7 +393,7 @@
     </div>
   </div>
   <?php include '../components/footer-script.php'; ?>
-  <script src="../assets/js/product-script.js"></script>
+  <script src="/photak-system/assets/js/product-script.js"></script>
 </body>
 
 </html>

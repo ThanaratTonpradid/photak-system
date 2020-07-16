@@ -4,7 +4,7 @@
 <head>
   <title>บันทึกใบแจ้งซ่อม - ระบบแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์</title>
   <?php include '../components/head.php'; ?>
-  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="/photak-system/assets/css/dashboard.css">
 </head>
 
 <body>
@@ -226,7 +226,7 @@
             <div class="col-md-4 mb-3">
               <label for="finishStaff">ผู้ซ่อม</label>
               <select class="form-control" id="finishStaff" required>
-                <option selected disabled value="">เลือกผู้ซ่อม...</option>
+                <option selected disabled value="">เลือกผู้ซ่อม/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -240,7 +240,7 @@
               <label class="pt-0">รูปภาพ</label>
               <div class="custom-file">
                 <input type="file" class="custom-file-input" id="customFileCreate" lang="th">
-                <label class="custom-file-label create" for="customFileCreate">เลือกไฟล์...</label>
+                <label class="custom-file-label create" for="customFileCreate">เลือกไฟล์/photak-system.</label>
               </div>
               <img id='create-file-preview' class="img-thumbnail w-50 d-none" />
             </div>
@@ -310,7 +310,7 @@
             <div class="col-md-4 mb-3">
               <label for="finishStaff">ผู้ซ่อม</label>
               <select class="form-control" id="finishStaff" required>
-                <option selected disabled value="">เลือกผู้ซ่อม...</option>
+                <option selected disabled value="">เลือกผู้ซ่อม/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -324,7 +324,7 @@
               <label class="pt-0">รูปภาพ</label>
               <div class="custom-file">
                 <input type="file" class="custom-file-input" id="customFileEdit" lang="th">
-                <label class="custom-file-label edit" for="customFileEdit">เลือกไฟล์...</label>
+                <label class="custom-file-label edit" for="customFileEdit">เลือกไฟล์/photak-system.</label>
               </div>
               <img id='edit-file-preview' class="img-thumbnail w-50 d-none" />
             </div>
@@ -337,7 +337,7 @@
     </div>
   </div>
   <?php include '../components/footer-script.php'; ?>
-  <script src="../assets/js/finish-repair-script.js"></script>
+  <script src="/photak-system/assets/js/finish-repair-script.js"></script>
 </body>
 
 </html>

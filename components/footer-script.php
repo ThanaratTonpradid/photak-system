@@ -4,5 +4,5 @@
 <!--   Popper   -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <!--   Bootstrap JS Files   -->
-<script src="../assets/js/bootstrap/bootstrap.bundle.js"></script>
-<script src="../assets/js/dashboard.js"></script>
+<script src="/photak-system/assets/js/bootstrap/bootstrap.bundle.js"></script>
+<script src="/photak-system/assets/js/dashboard.js"></script>

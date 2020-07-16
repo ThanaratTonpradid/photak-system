@@ -2,7 +2,7 @@
   <div class="sidebar-sticky pt-3">
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link" id="home-menu" href="/index.php">
+        <a class="nav-link" id="home-menu" href="/photak-system/index.php">
           <span data-feather="home"></span>
           Dashboard
         </a>
@@ -14,27 +14,27 @@
         </a>
         <ul class="nav flex-column ml-5 collapse" id="setting-submenu" aria-labelledby="setting-menu" data-parent="#sidebarMenu">
           <li class="nav-item">
-            <a id="position-page" class="nav-link" href="/pages/position.php">
+            <a id="position-page" class="nav-link" href="/photak-system/pages/position.php">
               จัดการต่ำแหน่งผู้ใช้งาน
             </a>
           </li>
           <li class="nav-item">
-            <a id="department-page" class="nav-link" href="/pages/department.php">
+            <a id="department-page" class="nav-link" href="/photak-system/pages/department.php">
               จัดการแผนก
             </a>
           </li>
           <li class="nav-item">
-            <a id="employee-page" class="nav-link" href="/pages/employee.php">
+            <a id="employee-page" class="nav-link" href="/photak-system/pages/employee.php">
               จัดการผู้ใช้งาน
             </a>
           </li>
           <li class="nav-item">
-            <a id="building-page" class="nav-link" href="/pages/building.php">
+            <a id="building-page" class="nav-link" href="/photak-system/pages/building.php">
               จัดการอาคาร
             </a>
           </li>
           <li class="nav-item">
-            <a id="room-page" class="nav-link" href="/pages/room.php">
+            <a id="room-page" class="nav-link" href="/photak-system/pages/room.php">
               จัดการห้อง
             </a>
           </li>
@@ -47,22 +47,22 @@
         </a>
         <ul class="nav flex-column ml-5 collapse" id="product-submenu" aria-labelledby="product-menu" data-parent="#sidebarMenu">
           <li class="nav-item">
-            <a id="material-type-page" class="nav-link" href="/pages/material-type.php">
+            <a id="material-type-page" class="nav-link" href="/photak-system/pages/material-type.php">
               ประเภทวัสดุคอมพิวเตอร์
             </a>
           </li>
           <li class="nav-item">
-            <a id="product-type-page" class="nav-link" href="/pages/product-type.php">
+            <a id="product-type-page" class="nav-link" href="/photak-system/pages/product-type.php">
               ประเภทครุภัณฑ์คอมพิวเตอร์
             </a>
           </li>
           <li class="nav-item">
-            <a id="material-page" class="nav-link" href="/pages/material.php">
+            <a id="material-page" class="nav-link" href="/photak-system/pages/material.php">
               จัดการวัสดุคอมพิวเตอร์
             </a>
           </li>
           <li class="nav-item">
-            <a id="product-page" class="nav-link" href="/pages/product.php">
+            <a id="product-page" class="nav-link" href="/photak-system/pages/product.php">
               จัดการครุภัณฑ์คอมพิวเตอร์
             </a>
           </li>
@@ -75,22 +75,22 @@
         </a>
         <ul class="nav flex-column ml-5 collapse" id="repair-submenu" aria-labelledby="repair-menu" data-parent="#sidebarMenu">
           <li class="nav-item">
-            <a id="notify-repair-page" class="nav-link" href="/pages/notify-repair.php">
+            <a id="notify-repair-page" class="nav-link" href="/photak-system/pages/notify-repair.php">
               จัดการใบแจ้งซ่อม
             </a>
           </li>
           <li class="nav-item">
-            <a id="approve-repair-page" class="nav-link" href="/pages/approve-repair.php">
+            <a id="approve-repair-page" class="nav-link" href="/photak-system/pages/approve-repair.php">
               อนุมัติใบแจ้งซ่อม
             </a>
           </li>
           <li class="nav-item">
-            <a id="assign-repair-page" class="nav-link" href="/pages/assign-repair.php">
+            <a id="assign-repair-page" class="nav-link" href="/photak-system/pages/assign-repair.php">
               กำหนดผู้รับผิดชอบใบแจ้งซ่อม
             </a>
           </li>
           <li class="nav-item">
-            <a id="finish-repair-page" class="nav-link" href="/pages/finish-repair.php">
+            <a id="finish-repair-page" class="nav-link" href="/photak-system/pages/finish-repair.php">
               บันทึกใบแจ้งซ่อม
             </a>
           </li>
@@ -103,12 +103,12 @@
         </a>
         <ul class="nav flex-column ml-5 collapse" id="material-submenu" aria-labelledby="material-menu" data-parent="#sidebarMenu">
           <li class="nav-item">
-            <a id="mat-with-page" class="nav-link" href="/pages/mat-with.php">
+            <a id="mat-with-page" class="nav-link" href="/photak-system/pages/mat-with.php">
               ใบเบิกวัสดุ
             </a>
           </li>
           <li class="nav-item">
-            <a id="mat-with-approve-page" class="nav-link" href="/pages/mat-with-approve.php">
+            <a id="mat-with-approve-page" class="nav-link" href="/photak-system/pages/mat-with-approve.php">
               อนุมัติใบเบิกวัสดุ
             </a>
           </li>
@@ -121,37 +121,37 @@
         </a>
         <ul class="nav flex-column ml-5 collapse" id="report-submenu" aria-labelledby="report-menu" data-parent="#sidebarMenu">
           <li class="nav-item">
-            <a id="product-report-page" class="nav-link" href="/pages/product-report.php">
+            <a id="product-report-page" class="nav-link" href="/photak-system/pages/product-report.php">
               รายงานทะเบียนครุภัณฑ์
             </a>
           </li>
           <li class="nav-item">
-            <a id="product-history-report-page" class="nav-link" href="/pages/product-history-report.php">
+            <a id="product-history-report-page" class="nav-link" href="/photak-system/pages/product-history-report.php">
               รายงานประวัติครุภัณฑ์
             </a>
           </li>
           <li class="nav-item">
-            <a id="product-repair-report-page" class="nav-link" href="/pages/product-repair-report.php">
+            <a id="product-repair-report-page" class="nav-link" href="/photak-system/pages/product-repair-report.php">
               รายงานแจ้งซ่อมครุภัณฑ์
             </a>
           </li>
           <li class="nav-item">
-            <a id="product-inactive-report-page" class="nav-link" href="/pages/product-inactive-report.php">
+            <a id="product-inactive-report-page" class="nav-link" href="/photak-system/pages/product-inactive-report.php">
               รายงานจำหน่ายซ่อมครุภัณฑ์
             </a>
           </li>
           <li class="nav-item">
-            <a id="mat-with-report-page" class="nav-link" href="/pages/mat-with-report.php">
+            <a id="mat-with-report-page" class="nav-link" href="/photak-system/pages/mat-with-report.php">
               รายงานการเบิกวัสดุ
             </a>
           </li>
           <li class="nav-item">
-            <a id="mat-use-report-page" class="nav-link" href="/pages/mat-use-report.php">
+            <a id="mat-use-report-page" class="nav-link" href="/photak-system/pages/mat-use-report.php">
               รายงานใช้วัสดุ
             </a>
           </li>
           <li class="nav-item">
-            <a id="mat-with-approve-report-page" class="nav-link" href="/pages/mat-with-approve-report.php">
+            <a id="mat-with-approve-report-page" class="nav-link" href="/photak-system/pages/mat-with-approve-report.php">
               รายงานอนุมัติการเบิกวัสดุ
             </a>
           </li>

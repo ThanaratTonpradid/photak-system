@@ -4,7 +4,7 @@
 <head>
   <title>รายงานทะเบียนครุภัณฑ์คอมพิวเตอร์ - ระบบแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์</title>
   <?php include '../components/head.php'; ?>
-  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="/photak-system/assets/css/dashboard.css">
 </head>
 
 <body>
@@ -133,7 +133,7 @@
     </div>
   </div>
   <?php include '../components/footer-script.php'; ?>
-  <!-- <script src="../assets/js/report-script.js"></script> -->
+  <!-- <script src="/photak-system/assets/js/report-script.js"></script> -->
 </body>
 
 </html>

@@ -4,7 +4,7 @@
 <head>
   <title>อนุมัติใบแจ้งซ่อม - ระบบแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์</title>
   <?php include '../components/head.php'; ?>
-  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="/photak-system/assets/css/dashboard.css">
 </head>
 
 <body>
@@ -190,7 +190,7 @@
             <div class="col-md-4 mb-3">
               <label for="approveStaff">ผู้อนุมัติ</label>
               <select class="form-control" id="approveStaff" required>
-                <option selected disabled value="">เลือกผู้อนุมัติ...</option>
+                <option selected disabled value="">เลือกผู้อนุมัติ/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -252,7 +252,7 @@
             <div class="col-md-4 mb-3">
               <label for="approveStaff">ผู้อนุมัติ</label>
               <select class="form-control" id="approveStaff" required>
-                <option selected disabled value="">เลือกผู้อนุมัติ...</option>
+                <option selected disabled value="">เลือกผู้อนุมัติ/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -269,7 +269,7 @@
     </div>
   </div>
   <?php include '../components/footer-script.php'; ?>
-  <script src="../assets/js/approve-repair-script.js"></script>
+  <script src="/photak-system/assets/js/approve-repair-script.js"></script>
 </body>
 
 </html>

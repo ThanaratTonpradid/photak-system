@@ -4,7 +4,7 @@
 <head>
   <title>จัดการวัสดุคอมพิวเตอร์ - ระบบแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์</title>
   <?php include '../components/head.php'; ?>
-  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="/photak-system/assets/css/dashboard.css">
 </head>
 
 <body>
@@ -144,7 +144,7 @@
             <div class="col-md-4 mb-3">
               <label for="validateType">ประเภทวัสดุคอมพิวเตอร์</label>
               <select class="form-control" id="validateType" required>
-                <option selected disabled value="">เลือกประเภทวัสดุคอมพิวเตอร์...</option>
+                <option selected disabled value="">เลือกประเภทวัสดุคอมพิวเตอร์/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -183,7 +183,7 @@
             <div class="col-md-4 mb-3">
               <label for="validateType">ประเภทวัสดุคอมพิวเตอร์</label>
               <select class="form-control" id="validateType" required>
-                <option selected disabled value="">เลือกประเภทวัสดุคอมพิวเตอร์...</option>
+                <option selected disabled value="">เลือกประเภทวัสดุคอมพิวเตอร์/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -208,7 +208,7 @@
               </button>
             </div>
             <div class="modal-body">
-              ท่านต้องการลบข้อมูล ... หรือไม่
+              ท่านต้องการลบข้อมูล /photak-system. หรือไม่
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
@@ -221,7 +221,7 @@
     </div>
   </div>
   <?php include '../components/footer-script.php'; ?>
-  <script src="../assets/js/material-script.js"></script>
+  <script src="/photak-system/assets/js/material-script.js"></script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@
 <head>
   <title>จัดการผู้ใช้งาน - ระบบแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์</title>
   <?php include '../components/head.php'; ?>
-  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="/photak-system/assets/css/dashboard.css">
 </head>
 
 <body>
@@ -154,7 +154,7 @@
             <div class="col-md-4 mb-3">
               <label for="validatePosition">ต่ำแหน่ง</label>
               <select class="form-control" id="validatePosition" required>
-                <option selected disabled value="">เลือกต่ำแหน่ง...</option>
+                <option selected disabled value="">เลือกต่ำแหน่ง/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -167,7 +167,7 @@
             <div class="col-md-4 mb-3">
               <label for="validateDepartment">แผนก</label>
               <select class="form-control" id="validateDepartment" required>
-                <option selected disabled value="">เลือกแผนก...</option>
+                <option selected disabled value="">เลือกแผนก/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -204,7 +204,7 @@
             <div class="col-md-4 mb-3">
               <label for="validatePermission">สิทธิ์การใช้งาน</label>
               <select class="form-control" id="validatePermission" required>
-                <option selected disabled value="">เลือกสิทธิ์การใช้งาน...</option>
+                <option selected disabled value="">เลือกสิทธิ์การใช้งาน/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -237,7 +237,7 @@
             <div class="col-md-4 mb-3">
               <label for="validatePosition">ต่ำแหน่ง</label>
               <select class="form-control" id="validatePosition" required>
-                <option selected disabled value="">เลือกต่ำแหน่ง...</option>
+                <option selected disabled value="">เลือกต่ำแหน่ง/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -250,7 +250,7 @@
             <div class="col-md-4 mb-3">
               <label for="validateDepartment">แผนก</label>
               <select class="form-control" id="validateDepartment" required>
-                <option selected disabled value="">เลือกแผนก...</option>
+                <option selected disabled value="">เลือกแผนก/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -287,7 +287,7 @@
             <div class="col-md-4 mb-3">
               <label for="validatePermission">สิทธิ์การใช้งาน</label>
               <select class="form-control" id="validatePermission" required>
-                <option selected disabled value="">เลือกสิทธิ์การใช้งาน...</option>
+                <option selected disabled value="">เลือกสิทธิ์การใช้งาน/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -312,7 +312,7 @@
               </button>
             </div>
             <div class="modal-body">
-              ท่านต้องการลบข้อมูล ... หรือไม่
+              ท่านต้องการลบข้อมูล /photak-system. หรือไม่
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
@@ -325,7 +325,7 @@
     </div>
   </div>
   <?php include '../components/footer-script.php'; ?>
-  <script src="../assets/js/employee-script.js"></script>
+  <script src="/photak-system/assets/js/employee-script.js"></script>
 </body>
 
 </html>

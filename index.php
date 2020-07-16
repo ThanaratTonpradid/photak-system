@@ -4,7 +4,7 @@
 <head>
   <title>Dashboard - Equipment Maintenance Notification System</title>
   <?php include './components/head.php'; ?>
-  <link rel="stylesheet" href="../assets/css/dashboard.css">
+  <link rel="stylesheet" href="/photak-system/assets/css/dashboard.css">
 </head>
 
 <body>

@@ -4,7 +4,7 @@
 <head>
   <title>ใบเบิกวัสดุ - ระบบแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์</title>
   <?php include '../components/head.php'; ?>
-  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="/photak-system/assets/css/dashboard.css">
 </head>
 
 <body>
@@ -148,7 +148,7 @@
                 <label for="matWithStaff" class="col-sm-2 col-form-label">ผู้ขอเบิก</label>
                 <div class="col-sm-10">
                   <select class="form-control" id="matWithStaff" required>
-                    <option selected disabled value="">เลือกผู้ขอเบิก...</option>
+                    <option selected disabled value="">เลือกผู้ขอเบิก/photak-system.</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -166,7 +166,7 @@
                   <label class="input-group-text" for="selectMat">รายการ</label>
                 </div>
                 <select class="custom-select" id="selectMat" required>
-                  <option selected disabled value="">เลือกวัสดุคอมพิวเตอร์...</option>
+                  <option selected disabled value="">เลือกวัสดุคอมพิวเตอร์/photak-system.</option>
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -243,7 +243,7 @@
                 <label for="matWithStaff" class="col-sm-2 col-form-label">ผู้ขอเบิก</label>
                 <div class="col-sm-10">
                   <select class="form-control" id="matWithStaff" required>
-                    <option selected disabled value="">เลือกผู้ขอเบิก...</option>
+                    <option selected disabled value="">เลือกผู้ขอเบิก/photak-system.</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -261,7 +261,7 @@
                   <label class="input-group-text" for="selectMat">รายการ</label>
                 </div>
                 <select class="custom-select" id="selectMat" required>
-                  <option selected disabled value="">เลือกวัสดุคอมพิวเตอร์...</option>
+                  <option selected disabled value="">เลือกวัสดุคอมพิวเตอร์/photak-system.</option>
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -334,7 +334,7 @@
               </button>
             </div>
             <div class="modal-body">
-              ท่านต้องการลบข้อมูล ... หรือไม่
+              ท่านต้องการลบข้อมูล /photak-system. หรือไม่
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
@@ -347,7 +347,7 @@
     </div>
   </div>
   <?php include '../components/footer-script.php'; ?>
-  <script src="../assets/js/mat-with-script.js"></script>
+  <script src="/photak-system/assets/js/mat-with-script.js"></script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@
 <head>
   <title>กำหนดผู้รับผิดชอบใบแจ้งซ่อม - ระบบแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์</title>
   <?php include '../components/head.php'; ?>
-  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <link rel="stylesheet" href="/photak-system/assets/css/dashboard.css">
 </head>
 
 <body>
@@ -198,7 +198,7 @@
             <div class="col-md-4 mb-3">
               <label for="assignStaff">กำหนดผู้รับผิดชอบ</label>
               <select class="form-control" id="assignStaff" required>
-                <option selected disabled value="">เลือกผู้รับผิดชอบ...</option>
+                <option selected disabled value="">เลือกผู้รับผิดชอบ/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -260,7 +260,7 @@
             <div class="col-md-4 mb-3">
               <label for="assignStaff">กำหนดผู้รับผิดชอบ</label>
               <select class="form-control" id="assignStaff" required>
-                <option selected disabled value="">เลือกผู้รับผิดชอบ...</option>
+                <option selected disabled value="">เลือกผู้รับผิดชอบ/photak-system.</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -277,7 +277,7 @@
     </div>
   </div>
   <?php include '../components/footer-script.php'; ?>
-  <script src="../assets/js/assign-repair-script.js"></script>
+  <script src="/photak-system/assets/js/assign-repair-script.js"></script>
 </body>
 
 </html>
