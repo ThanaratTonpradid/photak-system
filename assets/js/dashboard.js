@@ -8,70 +8,70 @@
 /* sidebar script */
 $(function() {
   const pathname = window.location.pathname;
-  if (pathname === '/pages/position.php') {
+  if (/position/ig.test(pathname)) {
     $('#position-page').addClass('active')
     $('#setting-submenu').collapse('show')
-  } else if (pathname === '/pages/department.php') {
+  } else if (/department/ig.test(pathname)) {
     $('#department-page').addClass('active')
     $('#setting-submenu').collapse('show')
-  } else if (pathname === '/pages/employee.php') {
+  } else if (/employee/ig.test(pathname)) {
     $('#employee-page').addClass('active')
     $('#setting-submenu').collapse('show')
-  } else if (pathname === '/pages/building.php') {
+  } else if (/building/ig.test(pathname)) {
     $('#building-page').addClass('active')
     $('#setting-submenu').collapse('show')
-  } else if (pathname === '/pages/room.php') {
+  } else if (/room/ig.test(pathname)) {
     $('#room-page').addClass('active')
     $('#setting-submenu').collapse('show')
-  } else if (pathname === '/pages/material-type.php') {
+  } else if (/material-type/ig.test(pathname)) {
     $('#material-type-page').addClass('active')
     $('#product-submenu').collapse('show')
-  } else if (pathname === '/pages/product-type.php') {
+  } else if (/product-type/ig.test(pathname)) {
     $('#product-type-page').addClass('active')
     $('#product-submenu').collapse('show')
-  } else if (pathname === '/pages/material.php') {
+  } else if (/material/ig.test(pathname)) {
     $('#material-page').addClass('active')
     $('#product-submenu').collapse('show')
-  } else if (pathname === '/pages/product.php') {
+  } else if (/product/ig.test(pathname)) {
     $('#product-page').addClass('active')
     $('#product-submenu').collapse('show')
-  } else if (pathname === '/pages/notify-repair.php') {
+  } else if (/notify-repair/ig.test(pathname)) {
     $('#notify-repair-page').addClass('active')
     $('#repair-submenu').collapse('show')
-  } else if (pathname === '/pages/approve-repair.php') {
+  } else if (/approve-repair/ig.test(pathname)) {
     $('#approve-repair-page').addClass('active')
     $('#repair-submenu').collapse('show')
-  } else if (pathname === '/pages/assign-repair.php') {
+  } else if (/assign-repair/ig.test(pathname)) {
     $('#assign-repair-page').addClass('active')
     $('#repair-submenu').collapse('show')
-  } else if (pathname === '/pages/finish-repair.php') {
+  } else if (/finish-repair/ig.test(pathname)) {
     $('#finish-repair-page').addClass('active')
     $('#repair-submenu').collapse('show')
-  } else if (pathname === '/pages/mat-with.php') {
+  } else if (/mat-with/ig.test(pathname)) {
     $('#mat-with-page').addClass('active')
     $('#material-submenu').collapse('show')
-  } else if (pathname === '/pages/mat-with-approve.php') {
+  } else if (/mat-with-approve/ig.test(pathname)) {
     $('#mat-with-approve-page').addClass('active')
     $('#material-submenu').collapse('show')
-  } else if (pathname === '/pages/product-report.php') {
+  } else if (/product-report/ig.test(pathname)) {
     $('#product-report-page').addClass('active')
     $('#report-submenu').collapse('show')
-  } else if (pathname === '/pages/product-history-report.php') {
+  } else if (/product-history-report/ig.test(pathname)) {
     $('#product-history-report-page').addClass('active')
     $('#report-submenu').collapse('show')
-  } else if (pathname === '/pages/product-repair-report.php') {
+  } else if (/product-repair-report/ig.test(pathname)) {
     $('#product-repair-report-page').addClass('active')
     $('#report-submenu').collapse('show')
-  } else if (pathname === '/pages/product-inactive-report.php') {
+  } else if (/product-inactive-report/ig.test(pathname)) {
     $('#product-inactive-report-page').addClass('active')
     $('#report-submenu').collapse('show')
-  } else if (pathname === '/pages/mat-with-report.php') {
+  } else if (/mat-with-report/ig.test(pathname)) {
     $('#mat-with-report-page').addClass('active')
     $('#report-submenu').collapse('show')
-  } else if (pathname === '/pages/mat-use-report.php') {
+  } else if (/mat-use-report/ig.test(pathname)) {
     $('#mat-use-report-page').addClass('active')
     $('#report-submenu').collapse('show')
-  } else if (pathname === '/pages/mat-with-approve-report.php') {
+  } else if (/mat-with-approve-report/ig.test(pathname)) {
     $('#mat-with-approve-report-page').addClass('active')
     $('#report-submenu').collapse('show')
   } else {
