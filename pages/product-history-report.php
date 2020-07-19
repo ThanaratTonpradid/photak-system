@@ -18,16 +18,8 @@
           <h4>โรงพยาบาลโพธิ์ตาก</h4>
           <form>
             <div class="form-group row">
-              <label for="inputPassword" class="col-sm-3 col-form-label">ณ วันที่</label>
-              <div class="col-sm-9">
-                <input type="date" class="form-control" id="inputPassword">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="inputPassword" class="col-sm-3 col-form-label">ณ วันที่</label>
-              <div class="col-sm-9">
-                <input type="date" class="form-control" id="inputPassword">
-              </div>
+              <label  class="col-5 col-form-label" for="validateNumber">หมายเลขครุภัณฑ์</label>
+              <input type="text" class="form-control col-7" id="validateNumber">
             </div>
           </form>
         </div>
@@ -39,12 +31,6 @@
                 <th>รายการ</th>
                 <th>หมายเลขครุภัณฑ์</th>
                 <th>ประเภท</th>
-                <th>ยี่ห้อ</th>
-                <th>อาคาร</th>
-                <th>ห้อง</th>
-                <th>สถานะ</th>
-                <th>วันที่เริ่มใช้</th>
-                <th>ผู้รับผิดชอบ</th>
               </tr>
             </thead>
             <tbody>
@@ -53,22 +39,10 @@
                 <td>Lorem</td>
                 <td>ipsum</td>
                 <td>ipsum</td>
-                <td>ipsum</td>
-                <td>ipsum</td>
-                <td>ipsum</td>
-                <td>ipsum</td>
-                <td>ipsum</td>
-                <td>ipsum</td>
               </tr>
               <tr>
                 <td>1,002</td>
                 <td>amet</td>
-                <td>consectetur</td>
-                <td>consectetur</td>
-                <td>consectetur</td>
-                <td>consectetur</td>
-                <td>consectetur</td>
-                <td>consectetur</td>
                 <td>consectetur</td>
                 <td>consectetur</td>
               </tr>
@@ -77,22 +51,10 @@
                 <td>Integer</td>
                 <td>nec</td>
                 <td>nec</td>
-                <td>nec</td>
-                <td>nec</td>
-                <td>nec</td>
-                <td>nec</td>
-                <td>nec</td>
-                <td>nec</td>
               </tr>
               <tr>
                 <td>1,003</td>
                 <td>libero</td>
-                <td>Sed</td>
-                <td>Sed</td>
-                <td>Sed</td>
-                <td>Sed</td>
-                <td>Sed</td>
-                <td>Sed</td>
                 <td>Sed</td>
                 <td>Sed</td>
               </tr>
@@ -101,34 +63,16 @@
                 <td>dapibus</td>
                 <td>diam</td>
                 <td>diam</td>
-                <td>diam</td>
-                <td>diam</td>
-                <td>diam</td>
-                <td>diam</td>
-                <td>diam</td>
-                <td>diam</td>
               </tr>
               <tr>
                 <td>1,005</td>
                 <td>Nulla</td>
                 <td>quis</td>
                 <td>quis</td>
-                <td>quis</td>
-                <td>quis</td>
-                <td>quis</td>
-                <td>quis</td>
-                <td>quis</td>
-                <td>quis</td>
               </tr>
               <tr>
                 <td>1,006</td>
                 <td>nibh</td>
-                <td>elementum</td>
-                <td>elementum</td>
-                <td>elementum</td>
-                <td>elementum</td>
-                <td>elementum</td>
-                <td>elementum</td>
                 <td>elementum</td>
                 <td>elementum</td>
               </tr>
