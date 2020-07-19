@@ -8,8 +8,6 @@
 /* sidebar script */
 $(function() {
   const pathname = window.location.pathname;
-  console.log(window.location);
-  console.log(pathname);
   if (pathname === '/photak-system/pages/position.php') {
     $('#position-page').addClass('active')
     $('#setting-submenu').collapse('show')
