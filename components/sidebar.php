@@ -152,7 +152,7 @@
           </li>
           <li class="nav-item">
             <a id="mat-with-approve-report-page" class="nav-link" href="/photak-system/pages/mat-with-approve-report.php">
-              รายงานอนุมัติการเบิกวัสดุ
+              รายงานการอนุมัติเบิกวัสดุ
             </a>
           </li>
         </ul>
