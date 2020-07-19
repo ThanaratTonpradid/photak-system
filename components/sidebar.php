@@ -137,7 +137,7 @@
           </li>
           <li class="nav-item">
             <a id="product-inactive-report-page" class="nav-link" href="/photak-system/pages/product-inactive-report.php">
-              รายงานจำหน่ายซ่อมครุภัณฑ์
+              รายงานจำหน่ายครุภัณฑ์
             </a>
           </li>
           <li class="nav-item">
