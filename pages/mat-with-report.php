@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>รายงานการเบิกวัสดุ - ระบบแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์</title>
+  <title>รายงานการเบิกวัสดุคอมพิวเตอร์ - ระบบแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์</title>
   <?php include '../components/head.php'; ?>
   <link rel="stylesheet" href="/photak-system/assets/css/dashboard.css">
 </head>
@@ -14,7 +14,7 @@
       <?php include '../components/sidebar.php'; ?>
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-center flex-wrap flex-column align-items-center pt-3 pb-2 mb-3">
-          <h3>รายงานการเบิกวัสดุ</h3>
+          <h3>รายงานการเบิกวัสดุคอมพิวเตอร์</h3>
           <h4>โรงพยาบาลโพธิ์ตาก</h4>
           <form>
             <div class="form-group input-group">
