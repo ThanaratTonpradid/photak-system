@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>รายงาน - ระบบแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์</title>
+  <title>รายงานแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์ - ระบบแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์</title>
   <?php include '../components/head.php'; ?>
   <link rel="stylesheet" href="/photak-system/assets/css/dashboard.css">
 </head>
@@ -14,15 +14,23 @@
       <?php include '../components/sidebar.php'; ?>
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-center flex-wrap flex-column align-items-center pt-3 pb-2 mb-3">
-          <h3>รายงานทะเบียน</h3>
+          <h3>รายงานแจ้งซ่อมครุภัณฑ์คอมพิวเตอร์</h3>
           <h4>โรงพยาบาลโพธิ์ตาก</h4>
-          <form>
-            <!-- <div class="form-group row">
-              <label for="inputPassword" class="col-sm-3 col-form-label">ณ วันที่</label>
-              <div class="col-sm-9">
-                <input type="date" class="form-control" id="inputPassword">
+          <form class="d-flex justify-center align-items-center flex-column">
+            <div class="form-group input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">ณ วันที่</span>
               </div>
-            </div> -->
+              <input type="date" class="form-control" id="startDate">
+              <div class="input-group-prepend">
+                <span class="input-group-text">ถึง</span>
+              </div>
+              <input type="date" class="form-control" id="endDate">
+            </div>
+            <div class="form-group row">
+              <label  class="col-4 col-form-label" for="validateNumber">แผนก</label>
+              <input type="text" class="form-control col-8" id="validateNumber">
+            </div>
           </form>
         </div>
         <div class="table-responsive">
@@ -30,15 +38,15 @@
             <thead>
               <tr>
                 <th>ลำดับ</th>
-                <th>รายการ</th>
-                <th>หมายเลขครุภัณฑ์</th>
-                <th>ประเภท</th>
-                <th>ยี่ห้อ</th>
-                <th>อาคาร</th>
-                <th>ห้อง</th>
+                <th>รหัสแจ้งซ่อม</th>
+                <th>รายละเอียดการแจ้ง</th>
+                <th>ผู้แจ้ง</th>
+                <th>ผู้อนุมัติซ่อม</th>
+                <th>รายละเอียดการซ่อม</th>
                 <th>สถานะ</th>
-                <th>วันที่เริ่มใช้</th>
-                <th>ผู้รับผิดชอบ</th>
+                <th>วันที่แจ้ง</th>
+                <th>วันที่ซ่อมเสร็จ</th>
+                <th>ผู้รับผิดชอบซ่อม</th>
               </tr>
             </thead>
             <tbody>
