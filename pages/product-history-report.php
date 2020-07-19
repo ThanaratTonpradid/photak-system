@@ -27,10 +27,10 @@
           <table class="table table-striped table-sm">
             <thead>
               <tr>
-                <th>ลำดับ</th>
-                <th>รายการ</th>
-                <th>หมายเลขครุภัณฑ์</th>
-                <th>ประเภท</th>
+                <th>รหัส</th>
+                <th>วันที่ซ่อม</th>
+                <th>รายการเปลี่ยนวัสดุ</th>
+                <th>รายละเอียดการซ่อม</th>
               </tr>
             </thead>
             <tbody>
