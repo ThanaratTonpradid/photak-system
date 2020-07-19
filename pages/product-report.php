@@ -17,11 +17,11 @@
           <h3>รายงานทะเบียนครุภัณฑ์คอมพิวเตอร์</h3>
           <h4>โรงพยาบาลโพธิ์ตาก</h4>
           <form>
-            <div class="form-group row">
-              <label for="inputPassword" class="col-sm-3 col-form-label">ณ วันที่</label>
-              <div class="col-sm-9">
-                <input type="date" class="form-control" id="inputPassword">
+            <div class="form-group input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">ณ วันที่</span>
               </div>
+              <input type="date" class="form-control" id="startDate">
             </div>
           </form>
         </div>
