@@ -6,7 +6,6 @@
   <?php include '../components/head.php'; ?>
   <link rel="stylesheet" href="/photak-system/assets/css/dashboard.css">
 </head>
-
 <body>
   <?php include '../components/header.php'; ?>
   <div class="container-fluid">
@@ -18,6 +17,7 @@
         <button id="add-form-btn" type="button" class="btn btn-primary"><span data-feather="plus"></span>เพิ่มข้อมูล</button>
       </div>
       <div class="table-responsive">
+        <?php include  '../actions/db-connection.php'; ?>
         <table class="table table-striped table-sm">
           <thead>
             <tr>
@@ -28,98 +28,80 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>Lorem</td>
-              <td>ipsum</td>
+            <?php
+              $result = mysqli_query($conn,"SELECT * FROM position");
+              $i=1;
+              if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_array($result)) {
+            ?>
+            <tr id="<?php echo $row["id"]; ?>">
+              <td><?php echo $i; ?></td>
+              <td><?php echo $row["id"]; ?></td>
+              <td><?php echo $row["posi_name"]; ?></td>
               <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletePositionDialog"><span data-feather="trash-2"></button>
+                <button
+                  type="button"
+                  class="btn btn-sm btn-info edit-btn"
+                  data-id="<?php echo $row["id"]; ?>"
+                  data-posi-name="<?php echo $row["posi_name"]; ?>"
+                >
+                  <span data-feather="edit-2">
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-sm btn-danger delete-btn"
+                  data-toggle="modal"
+                  data-target="#deletePositionDialog"
+                  data-id="<?php echo $row["id"]; ?>"
+                  data-posi-name="<?php echo $row["posi_name"]; ?>"
+                >
+                    <span data-feather="trash-2">
+                  </button>
               </td>
             </tr>
+            <?php
+                  $i++;
+                }
+              } else {
+            ?>
             <tr>
-              <td>1,002</td>
-              <td>amet</td>
-              <td>consectetur</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletePositionDialog"><span data-feather="trash-2"></button>
-              </td>
+              <td colspan="4">ไม่พบข้อมูล</td>
             </tr>
-            <tr>
-              <td>1,003</td>
-              <td>Integer</td>
-              <td>nec</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletePositionDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>libero</td>
-              <td>Sed</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletePositionDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,004</td>
-              <td>dapibus</td>
-              <td>diam</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletePositionDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,005</td>
-              <td>Nulla</td>
-              <td>quis</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletePositionDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,006</td>
-              <td>nibh</td>
-              <td>elementum</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletePositionDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
+            <?php
+              }
+            ?>
           </tbody>
         </table>
       </div>
       <!-- Create Form -->
       <div class="create-position-form d-none">
         <h4>เพิ่มตำแหน่งผู้ใช้งาน</h4>
-        <form>
+        <form id="create_form">
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">ชื่อตำแหน่งผู้ใช้งาน</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="posi_name">ชื่อตำแหน่งผู้ใช้งาน</label>
+              <input type="text" class="form-control" id="posi_name" name="posi_name" required>
             </div>
           </div>
+          <input type="hidden" value="create" name="type">
           <button id="cancel-save-btn" class="btn btn-secondary" type="button">ยกเลิก</button>
-          <button id="save-btn" class="btn btn-primary" type="submit">เพิ่มข้อมูล</button>
+          <button id="save-btn" class="btn btn-primary" type="button">เพิ่มข้อมูล</button>
         </form>
       </div>
       <!-- Update Form -->
       <div class="edit-position-form d-none">
         <h4>แก้ไขตำแหน่งผู้ใช้งาน</h4>
-        <form>
+        <form id="update_from">
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">ชื่อตำแหน่งผู้ใช้งาน</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="posi_name">ชื่อตำแหน่งผู้ใช้งาน</label>
+              <input type="hidden" id="posi_id" name="id" class="form-control" required>
+              <input type="text" class="form-control" id="posi_name" name="posi_name" required>
             </div>
           </div>
+          <input type="hidden" value="update" name="type">
           <button id="cancel-edit-btn" class="btn btn-secondary" type="button">ยกเลิก</button>
-          <button id="edit-btn" class="btn btn-primary" type="submit">แก้ไขข้อมูล</button>
+          <button id="edit-btn" class="btn btn-primary" type="button">แก้ไขข้อมูล</button>
         </form>
       </div>
 
@@ -134,11 +116,12 @@
               </button>
             </div>
             <div class="modal-body">
-              ท่านต้องการลบข้อมูล /photak-system. หรือไม่
+              <input type="hidden" id="id_d" name="id" class="form-control">
+              ท่านต้องการลบข้อมูล <span id="posi_name_d"></span> หรือไม่
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-              <button type="button" class="btn btn-danger">ลบข้อมูล</button>
+              <button type="button" class="btn btn-danger" id="delete-btn">ลบข้อมูล</button>
             </div>
           </div>
         </div>
