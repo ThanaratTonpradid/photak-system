@@ -51,7 +51,7 @@
                   type="button"
                   class="btn btn-sm btn-danger delete-btn"
                   data-toggle="modal"
-                  data-target="#deletePositionDialog"
+                  data-target="#deleteDialog"
                   data-id="<?php echo $row["id"]; ?>"
                   data-posi-name="<?php echo $row["posi_name"]; ?>"
                 >
@@ -108,11 +108,11 @@
       </div>
 
       <!-- Delete Modal -->
-      <div class="modal fade" id="deletePositionDialog" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal fade" id="deleteDialog" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title" id="deletePositionDialogLabel">ยืนยันการลบข้อมูล</h4>
+              <h4 class="modal-title" id="deleteDialogLabel">ยืนยันการลบข้อมูล</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
