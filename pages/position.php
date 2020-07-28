@@ -65,7 +65,9 @@
               } else {
             ?>
             <tr>
-              <td colspan="4">ไม่พบข้อมูล</td>
+              <td colspan="4" class="text-center">
+                <span>ไม่พบข้อมูล</span>
+              </td>
             </tr>
             <?php
               }
