@@ -74,9 +74,9 @@
         </table>
       </div>
       <!-- Create Form -->
-      <div class="create-position-form d-none">
+      <div class="create-form d-none">
         <h4>เพิ่มตำแหน่งผู้ใช้งาน</h4>
-        <form id="create_form">
+        <form id="create-form">
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="posi_name">ชื่อตำแหน่งผู้ใช้งาน</label>
@@ -89,14 +89,14 @@
         </form>
       </div>
       <!-- Update Form -->
-      <div class="edit-position-form d-none">
+      <div class="edit-form d-none">
         <h4>แก้ไขตำแหน่งผู้ใช้งาน</h4>
-        <form id="update_from">
+        <form id="edit-from">
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="posi_name">ชื่อตำแหน่งผู้ใช้งาน</label>
-              <input type="hidden" id="posi_id" name="id" class="form-control" required>
-              <input type="text" class="form-control" id="posi_name" name="posi_name" required>
+              <input type="hidden" id="posi_id_u" name="id" class="form-control" required>
+              <input type="text" class="form-control" id="posi_name_u" name="posi_name" required>
             </div>
           </div>
           <input type="hidden" value="update" name="type">

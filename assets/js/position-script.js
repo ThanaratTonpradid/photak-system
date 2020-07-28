@@ -1,28 +1,28 @@
 $(function() {
   $('#add-form-btn').on('click', function(){
     $('div.table-responsive').addClass('d-none');
-    $('div.create-position-form').removeClass('d-none');
+    $('div.create-form').removeClass('d-none');
     $('#add-form-btn').addClass('d-none');
   });
   $('#cancel-save-btn').on('click', function(){
     $('div.table-responsive').removeClass('d-none');
-    $('div.create-position-form').addClass('d-none');
+    $('div.create-form').addClass('d-none');
     $('#add-form-btn').removeClass('d-none');
   });
   $('#cancel-edit-btn').on('click', function(){
     $('div.table-responsive').removeClass('d-none');
-    $('div.edit-position-form').addClass('d-none');
+    $('div.edit-form').addClass('d-none');
     $('#add-form-btn').removeClass('d-none');
   });
   $('.edit-btn').on('click', function() {
     $('div.table-responsive').addClass('d-none');
-    $('div.edit-position-form').removeClass('d-none');
+    $('div.edit-form').removeClass('d-none');
     $('#add-form-btn').addClass('d-none');
 
     const id=$(this).attr("data-id");
     const posi_name=$(this).attr("data-posi-name");
-		$('#update_from #posi_id').val(id);
-		$('#update_from #posi_name').val(posi_name);
+		$('#posi_id_u').val(id);
+		$('#posi_name_u').val(posi_name);
   });
   $('.delete-btn').on('click', function() {
     const id=$(this).attr("data-id");
@@ -32,7 +32,7 @@ $(function() {
 	});
 
   $('#save-btn').click(function(){
-    const data = $("#create_form").serialize();
+    const data = $("#create-form").serialize();
     $.ajax({
       data: data,
       type: "post",
@@ -51,7 +51,7 @@ $(function() {
   });
 
   $('#edit-btn').click(function(){
-    const data = $("#update_from").serialize();
+    const data = $("#edit-from").serialize();
     $.ajax({
       data: data,
       type: "post",
