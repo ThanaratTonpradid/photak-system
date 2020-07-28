@@ -18,6 +18,7 @@
         <button id="add-form-btn" type="button" class="btn btn-primary"><span data-feather="plus"></span>เพิ่มข้อมูล</button>
       </div>
       <div class="table-responsive">
+        <?php include  '../actions/db-connection.php'; ?>
         <table class="table table-striped table-sm">
           <thead>
             <tr>
@@ -28,113 +29,98 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>Lorem</td>
-              <td>ipsum</td>
+            <?php
+              $result = mysqli_query($conn,"SELECT * FROM department");
+              $i=1;
+              if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_array($result)) {
+            ?>
+            <tr id="<?php echo $row["id"]; ?>">
+              <td><?php echo $i; ?></td>
+              <td><?php echo $row["id"]; ?></td>
+              <td><?php echo $row["d_name"]; ?></td>
               <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteDepartmentDialog"><span data-feather="trash-2"></button>
+                <button
+                  type="button"
+                  class="btn btn-sm btn-info edit-btn"
+                  data-id="<?php echo $row["id"]; ?>"
+                  data-d-name="<?php echo $row["d_name"]; ?>"
+                >
+                  <span data-feather="edit-2">
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-sm btn-danger delete-btn"
+                  data-toggle="modal"
+                  data-target="#deleteDialog"
+                  data-id="<?php echo $row["id"]; ?>"
+                  data-d-name="<?php echo $row["d_name"]; ?>"
+                >
+                    <span data-feather="trash-2">
+                  </button>
               </td>
             </tr>
+            <?php
+                  $i++;
+                }
+              } else {
+            ?>
             <tr>
-              <td>1,002</td>
-              <td>amet</td>
-              <td>consectetur</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteDepartmentDialog"><span data-feather="trash-2"></button>
+              <td colspan="4" class="text-center">
+                <span>ไม่พบข้อมูล</span>
               </td>
             </tr>
-            <tr>
-              <td>1,003</td>
-              <td>Integer</td>
-              <td>nec</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteDepartmentDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>libero</td>
-              <td>Sed</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteDepartmentDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,004</td>
-              <td>dapibus</td>
-              <td>diam</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteDepartmentDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,005</td>
-              <td>Nulla</td>
-              <td>quis</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteDepartmentDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,006</td>
-              <td>nibh</td>
-              <td>elementum</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteDepartmentDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
+            <?php
+              }
+            ?>
           </tbody>
         </table>
       </div>
       <!-- Create Form -->
-      <div class="create-department-form d-none">
+      <div class="create-form d-none">
         <h4>เพิ่มแผนก</h4>
-        <form>
+        <form id="create-form">
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">ชื่อแผนก</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="d_name">ชื่อแผนก</label>
+              <input type="text" class="form-control" id="d_name" name="d_name" required>
             </div>
           </div>
+          <input type="hidden" value="create" name="type">
           <button id="cancel-save-btn" class="btn btn-secondary" type="button">ยกเลิก</button>
-          <button id="save-btn" class="btn btn-primary" type="submit">เพิ่มข้อมูล</button>
+          <button id="save-btn" class="btn btn-primary" type="button">เพิ่มข้อมูล</button>
         </form>
       </div>
       <!-- Update Form -->
-      <div class="edit-department-form d-none">
+      <div class="edit-form d-none">
         <h4>แก้ไขแผนก</h4>
-        <form>
+        <form id="edit-from">
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">ชื่อแผนก</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="d_name_u">ชื่อแผนก</label>
+              <input type="hidden" id="d_id_u" name="id" class="form-control" required>
+              <input type="text" class="form-control" id="d_name_u" name="d_name" required>
             </div>
           </div>
+          <input type="hidden" value="update" name="type">
           <button id="cancel-edit-btn" class="btn btn-secondary" type="button">ยกเลิก</button>
-          <button id="edit-btn" class="btn btn-primary" type="submit">แก้ไขข้อมูล</button>
+          <button id="edit-btn" class="btn btn-primary" type="button">แก้ไขข้อมูล</button>
         </form>
       </div>
 
       <!-- Delete Modal -->
-      <div class="modal fade" id="deleteDepartmentDialog" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal fade" id="deleteDialog" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title" id="deleteDepartmentDialogLabel">ยืนยันการลบข้อมูล</h4>
+              <h4 class="modal-title" id="deleteDialogLabel">ยืนยันการลบข้อมูล</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              ท่านต้องการลบข้อมูล /photak-system. หรือไม่
+              <input type="hidden" id="id_d" name="id" class="form-control">
+              ท่านต้องการลบข้อมูล <span id="d_name_d"></span> หรือไม่
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
