@@ -124,7 +124,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-              <button type="button" class="btn btn-danger">ลบข้อมูล</button>
+              <button type="button" class="btn btn-danger" id="delete-btn">ลบข้อมูล</button>
             </div>
           </div>
         </div>
