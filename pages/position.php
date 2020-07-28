@@ -93,7 +93,7 @@
       <!-- Update Form -->
       <div class="edit-form d-none">
         <h4>แก้ไขตำแหน่งผู้ใช้งาน</h4>
-        <form id="edit-from">
+        <form id="edit-form">
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="posi_name">ชื่อตำแหน่งผู้ใช้งาน</label>

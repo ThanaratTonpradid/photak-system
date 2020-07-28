@@ -51,7 +51,7 @@ $(function() {
   });
 
   $('#edit-btn').click(function(){
-    const data = $("#edit-from").serialize();
+    const data = $("#edit-form").serialize();
     $.ajax({
       data: data,
       type: "post",
