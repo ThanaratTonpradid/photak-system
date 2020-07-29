@@ -18,6 +18,7 @@
         <button id="add-form-btn" type="button" class="btn btn-primary"><span data-feather="plus"></span>เพิ่มข้อมูล</button>
       </div>
       <div class="table-responsive">
+        <?php include  '../actions/db-connection.php'; ?>
         <table class="table table-striped table-sm">
           <thead>
             <tr>
@@ -33,290 +34,277 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>Lorem</td>
-              <td>ipsum</td>
-              <td>position</td>
-              <td>department</td>
-              <td>username</td>
-              <td>password</td>
-              <td>status</td>
+            <?php
+              $result = mysqli_query($conn,"SELECT * FROM employee");
+              $i=1;
+              if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_array($result)) {
+            ?>
+            <tr id="<?php echo $row["id"]; ?>">
+              <td><?php echo $i; ?></td>
+              <td><?php echo $row["em_fname"]; ?></td>
+              <td><?php echo $row["em_lname"]; ?></td>
+              <td><?php echo $row["posi_id"]; ?></td>
+              <td><?php echo $row["d_id"]; ?></td>
+              <td><?php echo $row["em_user"]; ?></td>
+              <td><?php echo $row["em_pass"]; ?></td>
+              <td><?php echo $row["em_status"]; ?></td>
               <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteEmployeeDialog"><span data-feather="trash-2"></button>
+                <button
+                  type="button"
+                  class="btn btn-sm btn-info edit-btn"
+                  data-id="<?php echo $row["id"]; ?>"
+                  data-em-fname="<?php echo $row["em_fname"]; ?>"
+                  data-em-lname="<?php echo $row["em_lname"]; ?>"
+                  data-em-user="<?php echo $row["em_user"]; ?>"
+                  data-em-pass="<?php echo $row["em_pass"]; ?>"
+                  data-em-status="<?php echo $row["em_status"]; ?>"
+                  data-em-group="<?php echo $row["em_group"]; ?>"
+                  data-posi-id="<?php echo $row["posi_id"]; ?>"
+                  data-d-id="<?php echo $row["d_id"]; ?>"
+                >
+                  <span data-feather="edit-2">
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-sm btn-danger delete-btn"
+                  data-toggle="modal"
+                  data-target="#deleteDialog"
+                  data-id="<?php echo $row["id"]; ?>"
+                  data-em-fname="<?php echo $row["em_fname"]; ?>"
+                  data-em-lname="<?php echo $row["em_lname"]; ?>"
+                  data-em-user="<?php echo $row["em_user"]; ?>"
+                  data-em-pass="<?php echo $row["em_pass"]; ?>"
+                  data-em-status="<?php echo $row["em_status"]; ?>"
+                  data-em-group="<?php echo $row["em_group"]; ?>"
+                  data-posi-id="<?php echo $row["posi_id"]; ?>"
+                  data-d-id="<?php echo $row["d_id"]; ?>"
+                >
+                    <span data-feather="trash-2">
+                  </button>
               </td>
             </tr>
+            <?php
+                  $i++;
+                }
+              } else {
+            ?>
             <tr>
-              <td>1,002</td>
-              <td>amet</td>
-              <td>consectetur</td>
-              <td>position</td>
-              <td>department</td>
-              <td>username</td>
-              <td>password</td>
-              <td>status</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteEmployeeDialog"><span data-feather="trash-2"></button>
+              <td colspan="9" class="text-center">
+                <span>ไม่พบข้อมูล</span>
               </td>
             </tr>
-            <tr>
-              <td>1,003</td>
-              <td>Integer</td>
-              <td>nec</td>
-              <td>position</td>
-              <td>department</td>
-              <td>username</td>
-              <td>password</td>
-              <td>status</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteEmployeeDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>libero</td>
-              <td>Sed</td>
-              <td>position</td>
-              <td>department</td>
-              <td>username</td>
-              <td>password</td>
-              <td>status</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteEmployeeDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,004</td>
-              <td>dapibus</td>
-              <td>diam</td>
-              <td>position</td>
-              <td>department</td>
-              <td>username</td>
-              <td>password</td>
-              <td>status</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteEmployeeDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,005</td>
-              <td>Nulla</td>
-              <td>quis</td>
-              <td>position</td>
-              <td>department</td>
-              <td>username</td>
-              <td>password</td>
-              <td>status</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteEmployeeDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,006</td>
-              <td>nibh</td>
-              <td>elementum</td>
-              <td>position</td>
-              <td>department</td>
-              <td>username</td>
-              <td>password</td>
-              <td>status</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteEmployeeDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
+            <?php
+              }
+            ?>
           </tbody>
         </table>
       </div>
       <!-- Create Form -->
-      <div class="create-employee-form d-none">
+      <div class="create-form d-none">
         <h4>เพิ่มผู้ใช้งาน</h4>
-        <form>
-        <div class="form-row">
+        <form id="create-form">
+          <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">ชื่อ</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="em_fname">ชื่อ</label>
+              <input type="text" class="form-control" id="em_fname" name="em_fname" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">นามสกุล</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="em_lname">นามสกุล</label>
+              <input type="text" class="form-control" id="em_lname" name="em_lname" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validatePosition">ต่ำแหน่ง</label>
-              <select class="form-control" id="validatePosition" required>
-                <option selected disabled value="">เลือกต่ำแหน่ง/photak-system.</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+              <label for="posi_id">ต่ำแหน่ง</label>
+              <select class="form-control" id="posi_id" name="posi_id" required>
+                <option selected disabled value="">เลือกตำแหน่ง</option>
+                <?php
+                  $result = mysqli_query($conn,"SELECT * FROM position");
+                  if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_array($result)) {
+                ?>
+                <option value="<?php echo $row["id"]; ?>"><?php echo $row["posi_name"]; ?></option>
+                <?php
+                    }
+                  }
+                ?>
               </select>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateDepartment">แผนก</label>
-              <select class="form-control" id="validateDepartment" required>
-                <option selected disabled value="">เลือกแผนก/photak-system.</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+              <label for="d_id">แผนก</label>
+              <select class="form-control" id="d_id" name="d_id" required>
+                <option selected disabled value="">เลือกแผนก</option>
+                <?php
+                  $result = mysqli_query($conn,"SELECT * FROM department");
+                  if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_array($result)) {
+                ?>
+                <option value="<?php echo $row["id"]; ?>"><?php echo $row["d_name"]; ?></option>
+                <?php
+                    }
+                  }
+                ?>
               </select>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateUser">username</label>
-              <input type="text" class="form-control" id="validateUser" required>
+              <label for="em_user">username</label>
+              <input type="text" class="form-control" id="em_user" name="em_user" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validatePass">password</label>
-              <input type="text" class="form-control" id="validatePass" required>
+              <label for="em_pass">password</label>
+              <input type="text" class="form-control" id="em_pass" name="em_pass" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="statusRadioOptions" id="statusRadio1" value="active" required>
-                <label class="form-check-label" for="statusRadio1">ยังปฏิบัติหน้าที่</label>
+                <input class="form-check-input" type="radio" name="em_status" id="em_status" value="active" checked="checked" required>
+                <label class="form-check-label" for="em_status">ยังปฏิบัติหน้าที่</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="statusRadioOptions" id="statusRadio2" value="inactive" required>
-                <label class="form-check-label" for="statusRadio2">ไม่ปฏิบัติหน้าที่</label>
+                <input class="form-check-input" type="radio" name="em_status" id="em_status" value="inactive" required>
+                <label class="form-check-label" for="em_status">ไม่ปฏิบัติหน้าที่</label>
               </div>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validatePermission">สิทธิ์การใช้งาน</label>
-              <select class="form-control" id="validatePermission" required>
-                <option selected disabled value="">เลือกสิทธิ์การใช้งาน/photak-system.</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+              <label for="em_group">สิทธิ์การใช้งาน</label>
+              <select class="form-control" id="em_group" name="em_group" required>
+                <option selected disabled value="">เลือกสิทธิ์การใช้งาน</option>
+                <option value="admin">ผู้ดูแลระบบ</option>
+                <option value="manager">หัวหน้างาน</option>
+                <option value="maintainer">ช่างซ่อมบำรุง</option>
+                <option value="user">ผู้ใช้งาน</option>
               </select>
             </div>
           </div>
+          <input type="hidden" value="create" name="type">
           <button id="cancel-save-btn" class="btn btn-secondary" type="button">ยกเลิก</button>
-          <button id="save-btn" class="btn btn-primary" type="submit">เพิ่มข้อมูล</button>
+          <button id="save-btn" class="btn btn-primary" type="button">เพิ่มข้อมูล</button>
         </form>
       </div>
       <!-- Update Form -->
-      <div class="edit-employee-form d-none">
+      <div class="edit-form d-none">
         <h4>แก้ไขผู้ใช้งาน</h4>
-        <form>
-          <div class="form-row">
+        <form id="edit-form">
+        <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">ชื่อ</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="em_fname">ชื่อ</label>
+              <input type="hidden" id="em_id_u" name="id" class="form-control" required>
+              <input type="text" class="form-control" id="em_fname_u" name="em_fname" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">นามสกุล</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="em_lname">นามสกุล</label>
+              <input type="text" class="form-control" id="em_lname_u" name="em_lname" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validatePosition">ต่ำแหน่ง</label>
-              <select class="form-control" id="validatePosition" required>
-                <option selected disabled value="">เลือกต่ำแหน่ง/photak-system.</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+              <label for="posi_id">ต่ำแหน่ง</label>
+              <select class="form-control" id="posi_id_u" name="posi_id" required>
+                <option disabled value="">เลือกตำแหน่ง</option>
+                <?php
+                  $result = mysqli_query($conn,"SELECT * FROM position");
+                  if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_array($result)) {
+                ?>
+                <option value="<?php echo $row["id"]; ?>"><?php echo $row["posi_name"]; ?></option>
+                <?php
+                    }
+                  }
+                ?>
               </select>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateDepartment">แผนก</label>
-              <select class="form-control" id="validateDepartment" required>
-                <option selected disabled value="">เลือกแผนก/photak-system.</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+              <label for="d_id">แผนก</label>
+              <select class="form-control" id="d_id_u" name="d_id" required>
+                <option disabled value="">เลือกแผนก</option>
+                <?php
+                  $result = mysqli_query($conn,"SELECT * FROM department");
+                  if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_array($result)) {
+                ?>
+                <option value="<?php echo $row["id"]; ?>"><?php echo $row["d_name"]; ?></option>
+                <?php
+                    }
+                  }
+                ?>
               </select>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateUser">username</label>
-              <input type="text" class="form-control" id="validateUser" required>
+              <label for="em_user">username</label>
+              <input type="text" class="form-control" id="em_user_u" name="em_user" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validatePass">password</label>
-              <input type="text" class="form-control" id="validatePass" required>
+              <label for="em_pass">password</label>
+              <input type="text" class="form-control" id="em_pass_u" name="em_pass" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="statusRadioOptions" id="statusRadio1" value="active" required>
-                <label class="form-check-label" for="statusRadio1">ยังปฏิบัติหน้าที่</label>
+                <input class="form-check-input" type="radio" name="em_status" id="em_status_u" value="active" required>
+                <label class="form-check-label" for="em_status">ยังปฏิบัติหน้าที่</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="statusRadioOptions" id="statusRadio2" value="inactive" required>
-                <label class="form-check-label" for="statusRadio2">ไม่ปฏิบัติหน้าที่</label>
+                <input class="form-check-input" type="radio" name="em_status" id="em_status_u" value="inactive" required>
+                <label class="form-check-label" for="em_status">ไม่ปฏิบัติหน้าที่</label>
               </div>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validatePermission">สิทธิ์การใช้งาน</label>
-              <select class="form-control" id="validatePermission" required>
-                <option selected disabled value="">เลือกสิทธิ์การใช้งาน/photak-system.</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+              <label for="em_group">สิทธิ์การใช้งาน</label>
+              <select class="form-control" id="em_group_u" name="em_group" required>
+                <option disabled value="">เลือกสิทธิ์การใช้งาน</option>
+                <option value="admin">ผู้ดูแลระบบ</option>
+                <option value="manager">หัวหน้างาน</option>
+                <option value="maintainer">ช่างซ่อมบำรุง</option>
+                <option value="user">ผู้ใช้งาน</option>
               </select>
             </div>
           </div>
+          <input type="hidden" value="update" name="type">
           <button id="cancel-edit-btn" class="btn btn-secondary" type="button">ยกเลิก</button>
-          <button id="edit-btn" class="btn btn-primary" type="submit">แก้ไขข้อมูล</button>
+          <button id="edit-btn" class="btn btn-primary" type="button">แก้ไขข้อมูล</button>
         </form>
       </div>
 
       <!-- Delete Modal -->
-      <div class="modal fade" id="deleteEmployeeDialog" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal fade" id="deleteDialog" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title" id="deleteEmployeeDialogLabel">ยืนยันการลบข้อมูล</h4>
+              <h4 class="modal-title" id="deleteDialogLabel">ยืนยันการลบข้อมูล</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              ท่านต้องการลบข้อมูล /photak-system. หรือไม่
+              <input type="hidden" id="id_d" name="id" class="form-control">
+              ท่านต้องการลบข้อมูล <span id="em_fname_d"></span><span id="em_lname_d"></span> หรือไม่
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-              <button type="button" class="btn btn-danger">ลบข้อมูล</button>
+              <button type="button" class="btn btn-danger" id="delete-btn">ลบข้อมูล</button>
             </div>
           </div>
         </div>
