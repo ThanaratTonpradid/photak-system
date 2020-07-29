@@ -144,7 +144,7 @@
             <div class="col-md-4 mb-3">
               <label for="buil_id">อาคาร</label>
               <select class="form-control" id="buil_id_u" name="buil_id" required>
-                <option selected disabled value="">เลือกอาคาร</option>
+                <option disabled value="">เลือกอาคาร</option>
                 <?php
                   $result = mysqli_query($conn,"SELECT * FROM building");
                   if (mysqli_num_rows($result) > 0) {

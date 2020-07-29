@@ -26,7 +26,7 @@ $(function() {
 		$('#room_id_u').val(id);
 		$('#room_name_u').val(room_name);
 		$('#room_phone_u').val(room_phone);
-		$('#room_buil_id').val(Number(buil_id));
+    $('buil_id_u').val(Number(buil_id));
   });
   $('.delete-btn').on('click', function() {
     const id=$(this).attr("data-id");
