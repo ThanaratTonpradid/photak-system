@@ -13,7 +13,7 @@
       $sql = "INSERT INTO `employee`( `em_fname`,`em_lname`,`em_user`,`em_pass`,`em_status`,`em_group`,`posi_id`,`d_id`)
       VALUES ('$em_fname','$em_lname','$em_user','$em_pass','$em_status','$em_group','$posi_id','$d_id')";
       if (mysqli_query($conn, $sql)) {
-        header("location: /photak-system/pages/position.php");
+        header("location: /photak-system/pages/employee.php");
       }
       else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -35,7 +35,7 @@
       $d_id=(int)$_POST['d_id'];
       $sql = "UPDATE `employee` SET `em_fname`='$em_fname',`em_lname`='$em_lname',`em_user`='$em_user',`em_pass`='$em_pass',`em_status`='$em_status',`em_group`='$em_group',`posi_id`='$posi_id',`d_id`='$d_id' WHERE id=$id";
       if (mysqli_query($conn, $sql)) {
-        header("location: /photak-system/pages/position.php");
+        header("location: /photak-system/pages/employee.php");
       }
       else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -49,7 +49,7 @@
       $id=$_POST['id'];
       $sql = "DELETE FROM employee WHERE id=$id";
       if (mysqli_query($conn, $sql)) {
-        header("location: /photak-system/pages/position.php");
+        header("location: /photak-system/pages/employee.php");
       }
       else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
