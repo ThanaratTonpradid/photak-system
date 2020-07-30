@@ -36,7 +36,7 @@
         <a href="/photak-system/pages/position.php?create" type="button" class="btn btn-primary<?php if ($create || $update) echo ' d-none'; ?>">
           <span data-feather="plus"></span>
           เพิ่มข้อมูล
-      </a>
+        </a>
       </div>
       <div class="table-responsive<?php if ($create || $update) echo ' d-none'; ?>">
         <table class="table table-striped table-sm">

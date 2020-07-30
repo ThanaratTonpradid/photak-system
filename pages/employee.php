@@ -13,12 +13,40 @@
     <div class="row">
       <?php include '../components/sidebar.php'; ?>
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+      <?php include  '../actions/db-connection.php'; ?>
+      <?php
+        if (isset($_GET['create'])) {
+          $create = true;
+          $update = false;
+        }
+      ?>
+      <?php
+        if (isset($_GET['edit'])) {
+          $id = $_GET['edit'];
+          $update = true;
+          $record = mysqli_query($conn, "SELECT * FROM employee WHERE id=$id");
+
+          if (mysqli_num_rows($record) == 1 ) {
+            $row = mysqli_fetch_array($record);
+            $em_fname = $row["em_fname"];
+            $em_lname = $row["em_lname"];
+            $posi_id = $row["posi_id"];
+            $d_id = $row["d_id"];
+            $em_user = $row["em_user"];
+            $em_pass = $row["em_pass"];
+            $em_status = $row["em_status"];
+            $em_group = $row["em_group"];
+          }
+        }
+      ?>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
         <h3>รายการผู้ใช้งาน</h3>
-        <button id="add-form-btn" type="button" class="btn btn-primary"><span data-feather="plus"></span>เพิ่มข้อมูล</button>
+        <a href="/photak-system/pages/employee.php?create" type="button" class="btn btn-primary<?php if ($create || $update) echo ' d-none'; ?>">
+          <span data-feather="plus"></span>
+          เพิ่มข้อมูล
+        </a>
       </div>
-      <div class="table-responsive">
-        <?php include  '../actions/db-connection.php'; ?>
+      <div class="table-responsive<?php if ($create || $update) echo ' d-none'; ?>">
         <table class="table table-striped table-sm">
           <thead>
             <tr>
@@ -49,39 +77,25 @@
               <td><?php echo $row["em_user"]; ?></td>
               <td><?php echo $row["em_pass"]; ?></td>
               <td><?php echo $row["em_status"]; ?></td>
-              <td>
-                <button
+              <td class="d-flex">
+                <a
+                  href="/photak-system/pages/employee.php?edit=<?php echo $row["id"]; ?>"
                   type="button"
                   class="btn btn-sm btn-info edit-btn"
-                  data-id="<?php echo $row["id"]; ?>"
-                  data-em-fname="<?php echo $row["em_fname"]; ?>"
-                  data-em-lname="<?php echo $row["em_lname"]; ?>"
-                  data-em-user="<?php echo $row["em_user"]; ?>"
-                  data-em-pass="<?php echo $row["em_pass"]; ?>"
-                  data-em-status="<?php echo $row["em_status"]; ?>"
-                  data-em-group="<?php echo $row["em_group"]; ?>"
-                  data-posi-id="<?php echo $row["posi_id"]; ?>"
-                  data-d-id="<?php echo $row["d_id"]; ?>"
                 >
                   <span data-feather="edit-2">
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-sm btn-danger delete-btn"
-                  data-toggle="modal"
-                  data-target="#deleteDialog"
-                  data-id="<?php echo $row["id"]; ?>"
-                  data-em-fname="<?php echo $row["em_fname"]; ?>"
-                  data-em-lname="<?php echo $row["em_lname"]; ?>"
-                  data-em-user="<?php echo $row["em_user"]; ?>"
-                  data-em-pass="<?php echo $row["em_pass"]; ?>"
-                  data-em-status="<?php echo $row["em_status"]; ?>"
-                  data-em-group="<?php echo $row["em_group"]; ?>"
-                  data-posi-id="<?php echo $row["posi_id"]; ?>"
-                  data-d-id="<?php echo $row["d_id"]; ?>"
-                >
+                </a>
+                <form method="POST" action="/photak-system/actions/employee.php">
+                  <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
+                  <input type="hidden" name="type" value="delete">
+                  <button
+                    type="submit"
+                    class="btn btn-sm btn-danger"
+                    onClick="javascript: return confirm('ยืนยันการลบข้อมูล <?php echo $row["d_name"]; ?>');"
+                  >
                     <span data-feather="trash-2">
                   </button>
+                </form>
               </td>
             </tr>
             <?php
@@ -101,25 +115,25 @@
         </table>
       </div>
       <!-- Create Form -->
-      <div class="create-form d-none">
+      <div class="create-form<?php if (!$create) echo ' d-none'; ?>">
         <h4>เพิ่มผู้ใช้งาน</h4>
-        <form id="create-form">
+        <form method="POST" action="/photak-system/actions/employee.php">
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="em_fname">ชื่อ</label>
-              <input type="text" class="form-control" id="em_fname" name="em_fname" required>
+              <input type="text" class="form-control" name="em_fname" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="em_lname">นามสกุล</label>
-              <input type="text" class="form-control" id="em_lname" name="em_lname" required>
+              <input type="text" class="form-control" name="em_lname" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="posi_id">ต่ำแหน่ง</label>
-              <select class="form-control" id="posi_id" name="posi_id" required>
+              <select class="form-control" name="posi_id" required>
                 <option selected disabled value="">เลือกตำแหน่ง</option>
                 <?php
                   $result = mysqli_query($conn,"SELECT * FROM position");
@@ -137,7 +151,7 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="d_id">แผนก</label>
-              <select class="form-control" id="d_id" name="d_id" required>
+              <select class="form-control" name="d_id" required>
                 <option selected disabled value="">เลือกแผนก</option>
                 <?php
                   $result = mysqli_query($conn,"SELECT * FROM department");
@@ -155,23 +169,23 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="em_user">username</label>
-              <input type="text" class="form-control" id="em_user" name="em_user" required>
+              <input type="text" class="form-control" name="em_user" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="em_pass">password</label>
-              <input type="text" class="form-control" id="em_pass" name="em_pass" required>
+              <input type="text" class="form-control" name="em_pass" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="em_status" id="em_status" value="active" checked="checked" required>
+                <input class="form-check-input" type="radio" name="em_status" value="active" checked="checked" required>
                 <label class="form-check-label" for="em_status">ยังปฏิบัติหน้าที่</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="em_status" id="em_status" value="inactive" required>
+                <input class="form-check-input" type="radio" name="em_status" value="inactive" required>
                 <label class="form-check-label" for="em_status">ไม่ปฏิบัติหน้าที่</label>
               </div>
             </div>
@@ -179,7 +193,7 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="em_group">สิทธิ์การใช้งาน</label>
-              <select class="form-control" id="em_group" name="em_group" required>
+              <select class="form-control" name="em_group" required>
                 <option selected disabled value="">เลือกสิทธิ์การใช้งาน</option>
                 <option value="admin">ผู้ดูแลระบบ</option>
                 <option value="manager">หัวหน้างาน</option>
@@ -189,38 +203,38 @@
             </div>
           </div>
           <input type="hidden" value="create" name="type">
-          <button id="cancel-save-btn" class="btn btn-secondary" type="button">ยกเลิก</button>
-          <button id="save-btn" class="btn btn-primary" type="button">เพิ่มข้อมูล</button>
+          <a href="/photak-system/pages/employee.php" class="btn btn-secondary" type="button">ยกเลิก</a>
+          <button id="save-btn" class="btn btn-primary" type="submit">เพิ่มข้อมูล</button>
         </form>
       </div>
       <!-- Update Form -->
-      <div class="edit-form d-none">
+      <div class="edit-form<?php if (!$update) echo ' d-none'; ?>">
         <h4>แก้ไขผู้ใช้งาน</h4>
-        <form id="edit-form">
+        <form method="POST" action="/photak-system/actions/employee.php">
         <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="em_fname">ชื่อ</label>
-              <input type="hidden" id="em_id_u" name="id" class="form-control" required>
-              <input type="text" class="form-control" id="em_fname_u" name="em_fname" required>
+              <input type="hidden" name="id" class="form-control" value="<?php echo $id; ?>" required>
+              <input type="text" class="form-control" name="em_fname" value="<?php echo $em_fname; ?>" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="em_lname">นามสกุล</label>
-              <input type="text" class="form-control" id="em_lname_u" name="em_lname" required>
+              <input type="text" class="form-control" name="em_lname" value="<?php echo $em_lname; ?>" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="posi_id">ต่ำแหน่ง</label>
-              <select class="form-control" id="posi_id_u" name="posi_id" required>
+              <select class="form-control" name="posi_id" required>
                 <option disabled value="">เลือกตำแหน่ง</option>
                 <?php
                   $result = mysqli_query($conn,"SELECT * FROM position");
                   if (mysqli_num_rows($result) > 0) {
                     while($row = mysqli_fetch_array($result)) {
                 ?>
-                <option value="<?php echo $row["id"]; ?>"><?php echo $row["posi_name"]; ?></option>
+                <option value="<?php echo $row["id"]; ?>" <?php if ($posi_id == $row["id"]) echo 'selected="selected"'; ?>><?php echo $row["posi_name"]; ?></option>
                 <?php
                     }
                   }
@@ -231,14 +245,14 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="d_id">แผนก</label>
-              <select class="form-control" id="d_id_u" name="d_id" required>
+              <select class="form-control" name="d_id" required>
                 <option disabled value="">เลือกแผนก</option>
                 <?php
                   $result = mysqli_query($conn,"SELECT * FROM department");
                   if (mysqli_num_rows($result) > 0) {
                     while($row = mysqli_fetch_array($result)) {
                 ?>
-                <option value="<?php echo $row["id"]; ?>"><?php echo $row["d_name"]; ?></option>
+                <option value="<?php echo $row["id"]; ?>" <?php if ($d_id == $row["id"]) echo 'selected="selected"'; ?>><?php echo $row["d_name"]; ?></option>
                 <?php
                     }
                   }
@@ -249,23 +263,23 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="em_user">username</label>
-              <input type="text" class="form-control" id="em_user_u" name="em_user" required>
+              <input type="text" class="form-control" name="em_user" value="<?php echo $em_user; ?>" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="em_pass">password</label>
-              <input type="text" class="form-control" id="em_pass_u" name="em_pass" required>
+              <input type="text" class="form-control" name="em_pass" value="<?php echo $em_pass; ?>" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="em_status" id="em_status_u" value="active" required>
+                <input class="form-check-input" type="radio" name="em_status" value="active" <?php if ($em_status == 'active') echo 'checked="checked"' ?> required>
                 <label class="form-check-label" for="em_status">ยังปฏิบัติหน้าที่</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="em_status" id="em_status_u" value="inactive" required>
+                <input class="form-check-input" type="radio" name="em_status" value="inactive" <?php if ($em_status == 'inactive') echo 'checked="checked"' ?> required>
                 <label class="form-check-label" for="em_status">ไม่ปฏิบัติหน้าที่</label>
               </div>
             </div>
@@ -273,47 +287,24 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="em_group">สิทธิ์การใช้งาน</label>
-              <select class="form-control" id="em_group_u" name="em_group" required>
+              <select class="form-control" name="em_group" required>
                 <option disabled value="">เลือกสิทธิ์การใช้งาน</option>
-                <option value="admin">ผู้ดูแลระบบ</option>
-                <option value="manager">หัวหน้างาน</option>
-                <option value="maintainer">ช่างซ่อมบำรุง</option>
-                <option value="user">ผู้ใช้งาน</option>
+                <option value="admin" <?php if($em_group == 'admin') echo 'selected="selected"'; ?>>ผู้ดูแลระบบ</option>
+                <option value="manager" <?php if($em_group == 'manager') echo 'selected="selected"'; ?>>หัวหน้างาน</option>
+                <option value="maintainer" <?php if($em_group == 'maintainer') echo 'selected="selected"'; ?>>ช่างซ่อมบำรุง</option>
+                <option value="user" <?php if($em_group == 'user') echo 'selected="selected"'; ?>>ผู้ใช้งาน</option>
               </select>
             </div>
           </div>
           <input type="hidden" value="update" name="type">
-          <button id="cancel-edit-btn" class="btn btn-secondary" type="button">ยกเลิก</button>
-          <button id="edit-btn" class="btn btn-primary" type="button">แก้ไขข้อมูล</button>
+          <a href="/photak-system/pages/employee.php" class="btn btn-secondary" type="button">ยกเลิก</a>
+          <button id="edit-btn" class="btn btn-primary" type="submit">แก้ไขข้อมูล</button>
         </form>
-      </div>
-
-      <!-- Delete Modal -->
-      <div class="modal fade" id="deleteDialog" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title" id="deleteDialogLabel">ยืนยันการลบข้อมูล</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <input type="hidden" id="id_d" name="id" class="form-control">
-              ท่านต้องการลบข้อมูล <span id="em_fname_d"></span><span id="em_lname_d"></span> หรือไม่
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-              <button type="button" class="btn btn-danger" id="delete-btn">ลบข้อมูล</button>
-            </div>
-          </div>
-        </div>
       </div>
     </main>
     </div>
   </div>
   <?php include '../components/footer-script.php'; ?>
-  <script src="/photak-system/assets/js/employee-script.js"></script>
 </body>
 
 </html>
