@@ -13,11 +13,36 @@
     <div class="row">
       <?php include '../components/sidebar.php'; ?>
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+      <?php include  '../actions/db-connection.php'; ?>
+      <?php
+        if (isset($_GET['create'])) {
+          $create = true;
+          $update = false;
+        }
+      ?>
+      <?php
+        if (isset($_GET['edit'])) {
+          $id = $_GET['edit'];
+          $update = true;
+          $record = mysqli_query($conn, "SELECT * FROM material WHERE id=$id");
+
+          if (mysqli_num_rows($record) == 1 ) {
+            $row = mysqli_fetch_array($record);
+            $mat_name = $row['mat_name'];
+            $mat_price = $row['mat_price'];
+            $mat_band = $row['mat_band'];
+            $mtype_id = $row['mtype_id'];
+          }
+        }
+      ?>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
         <h3>รายการวัสดุคอมพิวเตอร์</h3>
-        <button id="add-form-btn" type="button" class="btn btn-primary"><span data-feather="plus"></span>เพิ่มข้อมูล</button>
+        <a href="/photak-system/pages/material.php?create" type="button" class="btn btn-primary<?php if ($create || $update) echo ' d-none'; ?>">
+          <span data-feather="plus"></span>
+          เพิ่มข้อมูล
+        </a>
       </div>
-      <div class="table-responsive">
+      <div class="table-responsive<?php if ($create || $update) echo ' d-none'; ?>">
         <table class="table table-striped table-sm">
           <thead>
             <tr>
@@ -31,197 +56,151 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>Lorem</td>
-              <td>ipsum</td>
-              <td>brand</td>
-              <td>price</td>
-              <td>type</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMaterialDialog"><span data-feather="trash-2"></button>
+            <?php
+              $result = mysqli_query($conn,"SELECT * FROM material");
+              $i=1;
+              if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_array($result)) {
+            ?>
+            <tr id="<?php echo $row["id"]; ?>">
+              <td><?php echo $i; ?></td>
+              <td><?php echo $row["id"]; ?></td>
+              <td><?php echo $row["mat_name"]; ?></td>
+              <td><?php echo $row["mat_band"]; ?></td>
+              <td><?php echo $row["mat_price"]; ?></td>
+              <td><?php echo $row["mtype_id"]; ?></td>
+              <td class="d-flex">
+                <a
+                  href="/photak-system/pages/material.php?edit=<?php echo $row["id"]; ?>"
+                  type="button"
+                  class="btn btn-sm btn-info edit-btn"
+                >
+                  <span data-feather="edit-2">
+                </a>
+                <form method="POST" action="/photak-system/actions/material.php">
+                  <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
+                  <input type="hidden" name="type" value="delete">
+                  <button
+                    type="submit"
+                    class="btn btn-sm btn-danger"
+                    onClick="javascript: return confirm('ยืนยันการลบข้อมูล <?php echo $row["mat_name"]; ?>');"
+                  >
+                    <span data-feather="trash-2">
+                  </button>
+                </form>
               </td>
             </tr>
+            <?php
+                  $i++;
+                }
+              } else {
+            ?>
             <tr>
-              <td>1,002</td>
-              <td>amet</td>
-              <td>consectetur</td>
-              <td>brand</td>
-              <td>price</td>
-              <td>type</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMaterialDialog"><span data-feather="trash-2"></button>
+              <td colspan="7" class="text-center">
+                <span>ไม่พบข้อมูล</span>
               </td>
             </tr>
-            <tr>
-              <td>1,003</td>
-              <td>Integer</td>
-              <td>nec</td>
-              <td>brand</td>
-              <td>price</td>
-              <td>type</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMaterialDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>libero</td>
-              <td>Sed</td>
-              <td>brand</td>
-              <td>price</td>
-              <td>type</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMaterialDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,004</td>
-              <td>dapibus</td>
-              <td>diam</td>
-              <td>brand</td>
-              <td>price</td>
-              <td>type</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMaterialDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,005</td>
-              <td>Nulla</td>
-              <td>quis</td>
-              <td>brand</td>
-              <td>price</td>
-              <td>type</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMaterialDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,006</td>
-              <td>nibh</td>
-              <td>elementum</td>
-              <td>brand</td>
-              <td>price</td>
-              <td>type</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMaterialDialog"><span data-feather="trash-2"></button>
-              </td>
-            </tr>
+            <?php
+              }
+            ?>
           </tbody>
         </table>
       </div>
       <!-- Create Form -->
-      <div class="create-material-form d-none">
+      <div class="create-form<?php if (!$create) echo ' d-none'; ?>">
         <h4>เพิ่มวัสดุคอมพิวเตอร์</h4>
-        <form>
+        <form method="POST" action="/photak-system/actions/material.php">
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">ชื่อวัสดุคอมพิวเตอร์</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="mat_name">ชื่อวัสดุคอมพิวเตอร์</label>
+              <input type="text" class="form-control" name="mat_name" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateBrand">ยี่ห้อ</label>
-              <input type="text" class="form-control" id="validateBrand" required>
+              <label for="mat_band">ยี่ห้อ</label>
+              <input type="text" class="form-control" name="mat_band" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validatePrice">ราคา</label>
-              <input type="tel" class="form-control" id="validatePrice" required>
+              <label for="mat_price">ราคา</label>
+              <input type="tel" class="form-control" name="mat_price" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateType">ประเภทวัสดุคอมพิวเตอร์</label>
-              <select class="form-control" id="validateType" required>
-                <option selected disabled value="">เลือกประเภทวัสดุคอมพิวเตอร์/photak-system.</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+              <label for="mtype_id">ประเภทวัสดุคอมพิวเตอร์</label>
+              <select class="form-control" name="mtype_id" required>
+                <option selected disabled value="">เลือกประเภทวัสดุคอมพิวเตอร์</option>
+                <?php
+                  $result = mysqli_query($conn,"SELECT * FROM material_type");
+                  if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_array($result)) {
+                ?>
+                <option value="<?php echo $row["id"]; ?>"><?php echo $row["mtype_name"]; ?></option>
+                <?php
+                    }
+                  }
+                ?>
               </select>
             </div>
           </div>
-          <button id="cancel-save-btn" class="btn btn-secondary" type="button">ยกเลิก</button>
+          <input type="hidden" value="create" name="type">
+          <a href="/photak-system/pages/material.php" class="btn btn-secondary" type="button">ยกเลิก</a>
           <button id="save-btn" class="btn btn-primary" type="submit">เพิ่มข้อมูล</button>
         </form>
       </div>
       <!-- Update Form -->
-      <div class="edit-material-form d-none">
+      <div class="edit-form<?php if (!$update) echo ' d-none'; ?>">
         <h4>แก้ไขวัสดุคอมพิวเตอร์</h4>
-        <form>
+        <form method="POST" action="/photak-system/actions/material.php">
         <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateName">ชื่อวัสดุคอมพิวเตอร์</label>
-              <input type="text" class="form-control" id="validateName" required>
+              <label for="mat_name">ชื่อวัสดุคอมพิวเตอร์</label>
+              <input type="hidden" name="id" value="<?php echo $id; ?>">
+              <input type="text" class="form-control" name="mat_name" value="<?php echo $mat_name; ?>" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateBrand">ยี่ห้อ</label>
-              <input type="text" class="form-control" id="validateBrand" required>
+              <label for="mat_band">ยี่ห้อ</label>
+              <input type="text" class="form-control" name="mat_band" value="<?php echo $mat_band; ?>" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validatePrice">ราคา</label>
-              <input type="tel" class="form-control" id="validatePrice" required>
+              <label for="mat_price">ราคา</label>
+              <input type="tel" class="form-control" name="mat_price" value="<?php echo $mat_price; ?>" required>
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-4 mb-3">
-              <label for="validateType">ประเภทวัสดุคอมพิวเตอร์</label>
-              <select class="form-control" id="validateType" required>
-                <option selected disabled value="">เลือกประเภทวัสดุคอมพิวเตอร์/photak-system.</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+              <label for="mtype_id">ประเภทวัสดุคอมพิวเตอร์</label>
+              <select class="form-control" name="mtype_id" required>
+                <option disabled value="">เลือกประเภทวัสดุคอมพิวเตอร์</option>
+                <?php
+                  $result = mysqli_query($conn,"SELECT * FROM material_type");
+                  if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_array($result)) {
+                ?>
+                <option value="<?php echo $row["id"]; ?>" <?php if ($mtype_id == $row["id"]) echo 'selected="selected"'; ?>><?php echo $row["mtype_name"]; ?></option>
+                <?php
+                    }
+                  }
+                ?>
               </select>
             </div>
           </div>
-          <button id="cancel-edit-btn" class="btn btn-secondary" type="button">ยกเลิก</button>
+          <input type="hidden" value="update" name="type">
+          <a href="/photak-system/pages/material.php" class="btn btn-secondary" type="button">ยกเลิก</a>
           <button id="edit-btn" class="btn btn-primary" type="submit">แก้ไขข้อมูล</button>
         </form>
-      </div>
-
-      <!-- Delete Modal -->
-      <div class="modal fade" id="deleteMaterialDialog" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title" id="deleteMaterialDialogLabel">ยืนยันการลบข้อมูล</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ท่านต้องการลบข้อมูล /photak-system. หรือไม่
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-              <button type="button" class="btn btn-danger">ลบข้อมูล</button>
-            </div>
-          </div>
-        </div>
       </div>
     </main>
     </div>
   </div>
   <?php include '../components/footer-script.php'; ?>
-  <script src="/photak-system/assets/js/material-script.js"></script>
 </body>
 
 </html>
