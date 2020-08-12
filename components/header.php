@@ -5,7 +5,7 @@
   </button>
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" href="/photak-system/login.php">ออกจากระบบ</a>
+      <a class="nav-link" href="/photak-system/logout.php">ออกจากระบบ</a>
     </li>
   </ul>
 </nav>

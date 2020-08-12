@@ -1,3 +1,4 @@
+<?php include '../actions/session.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
