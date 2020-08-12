@@ -1,4 +1,9 @@
 <?php include '../actions/session.php'; ?>
+<?php
+  if (!$approveRepairPage) {
+    header("location: /photak-system/pages/no-permission.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 

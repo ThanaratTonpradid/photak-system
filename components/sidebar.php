@@ -1,18 +1,33 @@
+<?php
+  $settingMenu = false;
+  $productMenu = false;
+  $repairMenu = false;
+  $materialMenu = false;
+  $reportMenu = false;
+
+  if ($permission === 'admin' || $permission === 'user') {
+    $settingMenu = true;
+  }
+  if ($permission === 'manager') {
+    $productMenu = true;
+  }
+?>
+
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
   <div class="sidebar-sticky pt-3">
     <ul class="nav flex-column">
-      <li class="nav-item">
+      <li class="nav-item<?php echo $settingMenu ? '' : ' d-none'?>">
         <a class="nav-link" id="setting-menu" role="button" data-toggle="collapse" data-target="#setting-submenu" aria-expanded="true" aria-controls="setting-submenu">
           <span data-feather="settings"></span>
           ตั้งค่าระบบ
         </a>
         <ul class="nav flex-column ml-5 collapse" id="setting-submenu" aria-labelledby="setting-menu" data-parent="#sidebarMenu">
-          <li class="nav-item">
+          <li class="nav-item<?php echo $permission !== 'admin' ? ' d-none' : ''?>">
             <a id="position-page" class="nav-link" href="/photak-system/pages/position.php">
               จัดการต่ำแหน่งผู้ใช้งาน
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item<?php echo $permission !== 'admin' ? ' d-none' : ''?>">
             <a id="department-page" class="nav-link" href="/photak-system/pages/department.php">
               จัดการแผนก
             </a>
@@ -22,19 +37,19 @@
               จัดการผู้ใช้งาน
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item<?php echo $permission !== 'admin' ? ' d-none' : ''?>">
             <a id="building-page" class="nav-link" href="/photak-system/pages/building.php">
               จัดการอาคาร
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item<?php echo $permission !== 'admin' ? ' d-none' : ''?>">
             <a id="room-page" class="nav-link" href="/photak-system/pages/room.php">
               จัดการห้อง
             </a>
           </li>
         </ul>
       </li>
-      <li class="nav-item">
+      <li class="nav-item<?php echo $productMenu ? '' : ' d-none'?>">
         <a class="nav-link" id="product-menu" role="button" data-toggle="collapse" data-target="#product-submenu" aria-expanded="false" aria-controls="product-submenu">
           <span data-feather="shopping-cart"></span>
           ระบบจัดการวัสดุ-ครุภัณฑ์
@@ -62,7 +77,7 @@
           </li>
         </ul>
       </li>
-      <li class="nav-item">
+      <li class="nav-item<?php echo $repairMenu ? '' : ' d-none'?>">
         <a class="nav-link" id="repair-menu" role="button" data-toggle="collapse" data-target="#repair-submenu" aria-expanded="false" aria-controls="repair-submenu">
           <span data-feather="users"></span>
           ระบบแจ้งซ่อม
@@ -90,7 +105,7 @@
           </li>
         </ul>
       </li>
-      <li class="nav-item">
+      <li class="nav-item<?php echo $materialMenu ? '' : ' d-none'?>">
         <a class="nav-link" id="material-menu" role="button" data-toggle="collapse" data-target="#material-submenu" aria-expanded="false" aria-controls="material-submenu">
           <span data-feather="bar-chart-2"></span>
           ระบบเบิกวัสดุ
@@ -108,7 +123,7 @@
           </li>
         </ul>
       </li>
-      <li class="nav-item">
+      <li class="nav-item<?php echo $reportMenu ? '' : ' d-none'?>">
         <a class="nav-link" id="report-menu" role="button" data-toggle="collapse" data-target="#report-submenu" aria-expanded="false" aria-controls="report-submenu">
           <span data-feather="layers"></span>
           ระบบรายงาน

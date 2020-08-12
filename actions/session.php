@@ -18,3 +18,51 @@
       die();
    }
 ?>
+<?php
+  $positionPage = false;
+  $departmentPage = false;
+  $employeePage = false;
+  $buildingPage = false;
+  $roomPage = false;
+
+  $matTypePage = false;
+  $matPage = false;
+  $proTypePage = false;
+  $proPage = false;
+
+  $notiRepairPage = false;
+  $approveRepairPage = false;
+  $assignRepairPage = false;
+  $finishRepairPage = false;
+
+  $matWithPage = false;
+  $matWithApprovePage = false;
+
+  $productReportPage = false;
+  $productHistoryReportPage = false;
+  $productRepairReportPage = false;
+  $productInactiveReportPage = false;
+  $matWithReportPage = false;
+  $matUseReportPage = false;
+  $matWithApproveReportPage = false;
+
+  if ($permission === 'admin') {
+    $positionPage = true;
+    $departmentPage = true;
+    $employeePage = true;
+    $buildingPage = true;
+    $roomPage = true;
+  }
+  if ($permission === 'user') {
+    $employeePage = true;
+  }
+  if ($permission === 'manager') {
+    $matTypePage = true;
+    $matPage = true;
+    $proTypePage = true;
+    $proPage = true;
+  }
+  // if ($permission === 'maintainer') {
+
+  // }
+?>

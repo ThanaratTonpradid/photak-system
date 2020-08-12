@@ -1,4 +1,9 @@
 <?php include '../actions/session.php'; ?>
+<?php
+  if (!$employeePage) {
+    header("location: /photak-system/pages/no-permission.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +20,9 @@
       <?php include '../components/sidebar.php'; ?>
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
       <?php include  '../actions/db-connection.php'; ?>
+      <?php
+        $hideButton = $permission !== 'admin' ? ' d-none' : '';
+      ?>
       <?php
         if (isset($_GET['create'])) {
           $create = true;
@@ -42,7 +50,7 @@
       ?>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
         <h3>รายการผู้ใช้งาน</h3>
-        <a href="/photak-system/pages/employee.php?create" type="button" class="btn btn-primary<?php if ($create || $update) echo ' d-none'; ?>">
+        <a href="/photak-system/pages/employee.php?create" type="button" class="btn btn-primary<?php if ($create || $update) echo ' d-none'; ?><?php echo $hideButton; ?>">
           <span data-feather="plus"></span>
           เพิ่มข้อมูล
         </a>
@@ -86,7 +94,7 @@
                 >
                   <span data-feather="edit-2">
                 </a>
-                <form method="POST" action="/photak-system/actions/employee.php">
+                <form method="POST" action="/photak-system/actions/employee.php" class="<?php echo $hideButton; ?>">
                   <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
                   <input type="hidden" name="type" value="delete">
                   <button

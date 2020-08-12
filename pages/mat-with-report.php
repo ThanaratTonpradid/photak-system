@@ -1,4 +1,9 @@
 <?php include '../actions/session.php'; ?>
+<?php
+  if (!$matWithReportPage) {
+    header("location: /photak-system/pages/no-permission.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
