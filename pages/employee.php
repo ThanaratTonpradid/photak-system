@@ -263,7 +263,7 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="em_user">username</label>
-              <input type="text" class="form-control" name="em_user" value="<?php echo $em_user; ?>" required>
+              <input type="text" class="form-control" name="em_user" value="<?php echo $em_user; ?>" required readonly>
             </div>
           </div>
           <div class="form-row">
@@ -287,7 +287,7 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="em_group">สิทธิ์การใช้งาน</label>
-              <select class="form-control" name="em_group" required>
+              <select class="form-control" name="em_group" required readonly disabled>
                 <option disabled value="">เลือกสิทธิ์การใช้งาน</option>
                 <option value="admin" <?php if($em_group == 'admin') echo 'selected="selected"'; ?>>ผู้ดูแลระบบ</option>
                 <option value="manager" <?php if($em_group == 'manager') echo 'selected="selected"'; ?>>หัวหน้างาน</option>
