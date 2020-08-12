@@ -74,7 +74,5 @@ $(function() {
   } else if (pathname === '/photak-system/pages/mat-with-approve-report.php') {
     $('#mat-with-approve-report-page').addClass('active')
     $('#report-submenu').collapse('show')
-  } else {
-    $('#home-menu').addClass('active')
   }
 });

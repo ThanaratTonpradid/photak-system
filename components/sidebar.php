@@ -2,12 +2,6 @@
   <div class="sidebar-sticky pt-3">
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link" id="home-menu" href="/photak-system/index.php">
-          <span data-feather="home"></span>
-          Dashboard
-        </a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" id="setting-menu" role="button" data-toggle="collapse" data-target="#setting-submenu" aria-expanded="true" aria-controls="setting-submenu">
           <span data-feather="settings"></span>
           ตั้งค่าระบบ
