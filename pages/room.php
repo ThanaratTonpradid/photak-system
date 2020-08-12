@@ -46,7 +46,6 @@
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th>ลำดับ</th>
               <th>รหัส</th>
               <th>ชื่อห้อง</th>
               <th>เบอร์โทร</th>
@@ -57,12 +56,10 @@
           <tbody>
             <?php
               $result = mysqli_query($conn,"SELECT * FROM room");
-              $i=1;
               if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_array($result)) {
             ?>
             <tr id="<?php echo $row["id"]; ?>">
-              <td><?php echo $i; ?></td>
               <td><?php echo $row["id"]; ?></td>
               <td><?php echo $row["room_name"]; ?></td>
               <td><?php echo $row["room_phone"]; ?></td>
@@ -89,12 +86,11 @@
               </td>
             </tr>
             <?php
-                  $i++;
                 }
               } else {
             ?>
             <tr>
-              <td colspan="6" class="text-center">
+              <td colspan="5" class="text-center">
                 <span>ไม่พบข้อมูล</span>
               </td>
             </tr>

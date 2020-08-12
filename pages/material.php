@@ -46,7 +46,6 @@
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th>ลำดับ</th>
               <th>รหัส</th>
               <th>ชื่อวัสดุคอมพิวเตอร์</th>
               <th>ยี่ห้อ</th>
@@ -58,12 +57,10 @@
           <tbody>
             <?php
               $result = mysqli_query($conn,"SELECT * FROM material");
-              $i=1;
               if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_array($result)) {
             ?>
             <tr id="<?php echo $row["id"]; ?>">
-              <td><?php echo $i; ?></td>
               <td><?php echo $row["id"]; ?></td>
               <td><?php echo $row["mat_name"]; ?></td>
               <td><?php echo $row["mat_band"]; ?></td>
@@ -91,12 +88,11 @@
               </td>
             </tr>
             <?php
-                  $i++;
                 }
               } else {
             ?>
             <tr>
-              <td colspan="7" class="text-center">
+              <td colspan="6" class="text-center">
                 <span>ไม่พบข้อมูล</span>
               </td>
             </tr>

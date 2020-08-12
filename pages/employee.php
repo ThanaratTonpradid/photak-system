@@ -50,7 +50,7 @@
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th>ลำดับ</th>
+              <th>รหัสผู้ใช้งาน</th>
               <th>ชื่อ</th>
               <th>นามสกุล</th>
               <th>ต่ำแหน่ง</th>
@@ -69,7 +69,7 @@
                 while($row = mysqli_fetch_array($result)) {
             ?>
             <tr id="<?php echo $row["id"]; ?>">
-              <td><?php echo $i; ?></td>
+              <td><?php echo $row["id"]; ?></td>
               <td><?php echo $row["em_fname"]; ?></td>
               <td><?php echo $row["em_lname"]; ?></td>
               <td><?php echo $row["posi_id"]; ?></td>
