@@ -41,8 +41,6 @@
             $p_status = $row['p_status'];
             $p_image = $row['p_image'];
             $p_detail = $row['p_detail'];
-            // $p_datein = $row['p_datein'];
-            // $p_dateout = $row['p_dateout'];
             $p_datein = date('Y-m-d',strtotime($row['p_datein']));
             $p_dateout = date('Y-m-d',strtotime($row['p_dateout']));
             $ptype_id = $row['ptype_id'];
@@ -78,7 +76,8 @@
           </thead>
           <tbody>
             <?php
-              $result = mysqli_query($conn,"SELECT * FROM product");
+              $sql = "SELECT * FROM product INNER JOIN product_type ON product.ptype_id=product_type.id INNER JOIN employee ON product.em_id=employee.id";
+              $result = mysqli_query($conn,$sql);
               if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_array($result)) {
             ?>
@@ -90,8 +89,8 @@
               <td><?php echo $row["p_detail"]; ?></td>
               <td><?php echo $row["p_datein"]; ?></td>
               <td><?php echo $row["p_dateout"]; ?></td>
-              <td><?php echo $row["ptype_id"]; ?></td>
-              <td><?php echo $row["em_id"]; ?></td>
+              <td><?php echo $row["ptype_name"]; ?></td>
+              <td><?php echo $row["em_fname"]; ?> <?php echo $row["em_lname"]; ?></td>
               <td><?php echo $row["p_status"]; ?></td>
               <td><?php echo $row["p_image"]; ?></td>
               <td class="d-flex">

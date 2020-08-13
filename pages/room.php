@@ -61,7 +61,8 @@
           </thead>
           <tbody>
             <?php
-              $result = mysqli_query($conn,"SELECT * FROM room");
+              $sql = "SELECT * FROM room INNER JOIN building ON room.buil_id=building.id";
+              $result = mysqli_query($conn,$sql);
               if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_array($result)) {
             ?>
@@ -69,7 +70,7 @@
               <td><?php echo $row["id"]; ?></td>
               <td><?php echo $row["room_name"]; ?></td>
               <td><?php echo $row["room_phone"]; ?></td>
-              <td><?php echo $row["buil_id"]; ?></td>
+              <td><?php echo $row["buil_name"]; ?></td>
               <td class="d-flex">
                 <a
                   href="/photak-system/pages/room.php?edit=<?php echo $row["id"]; ?>"

@@ -72,7 +72,8 @@
           </thead>
           <tbody>
             <?php
-              $result = mysqli_query($conn,"SELECT * FROM employee");
+              $sql = "SELECT * FROM employee INNER JOIN position ON employee.posi_id=position.id INNER JOIN department ON employee.d_id=department.id";
+              $result = mysqli_query($conn, $sql);
               $i=1;
               if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_array($result)) {
@@ -81,8 +82,8 @@
               <td><?php echo $row["id"]; ?></td>
               <td><?php echo $row["em_fname"]; ?></td>
               <td><?php echo $row["em_lname"]; ?></td>
-              <td><?php echo $row["posi_id"]; ?></td>
-              <td><?php echo $row["d_id"]; ?></td>
+              <td><?php echo $row["posi_name"]; ?></td>
+              <td><?php echo $row["d_name"]; ?></td>
               <td><?php echo $row["em_user"]; ?></td>
               <td><?php echo $row["em_pass"]; ?></td>
               <td><?php echo $row["em_status"]; ?></td>

@@ -62,7 +62,8 @@
           </thead>
           <tbody>
             <?php
-              $result = mysqli_query($conn,"SELECT * FROM material");
+              $sql = "SELECT * FROM material INNER JOIN material_type ON material.mtype_id=material_type.id";
+              $result = mysqli_query($conn,$sql);
               if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_array($result)) {
             ?>
@@ -71,7 +72,7 @@
               <td><?php echo $row["mat_name"]; ?></td>
               <td><?php echo $row["mat_band"]; ?></td>
               <td><?php echo $row["mat_price"]; ?></td>
-              <td><?php echo $row["mtype_id"]; ?></td>
+              <td><?php echo $row["mtype_name"]; ?></td>
               <td class="d-flex">
                 <a
                   href="/photak-system/pages/material.php?edit=<?php echo $row["id"]; ?>"
