@@ -76,7 +76,7 @@
           </thead>
           <tbody>
             <?php
-              $sql = "SELECT * FROM product INNER JOIN product_type ON product.ptype_id=product_type.id INNER JOIN employee ON product.em_id=employee.id";
+              $sql = "SELECT *, product.id FROM product INNER JOIN product_type ON product.ptype_id=product_type.id INNER JOIN employee ON product.em_id=employee.id";
               $result = mysqli_query($conn,$sql);
               if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_array($result)) {

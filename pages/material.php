@@ -62,7 +62,7 @@
           </thead>
           <tbody>
             <?php
-              $sql = "SELECT * FROM material INNER JOIN material_type ON material.mtype_id=material_type.id";
+              $sql = "SELECT *, material.id FROM material INNER JOIN material_type ON material.mtype_id=material_type.id";
               $result = mysqli_query($conn,$sql);
               if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_array($result)) {

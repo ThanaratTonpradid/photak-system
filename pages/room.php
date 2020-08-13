@@ -61,7 +61,7 @@
           </thead>
           <tbody>
             <?php
-              $sql = "SELECT * FROM room INNER JOIN building ON room.buil_id=building.id";
+              $sql = "SELECT *, room.id FROM room INNER JOIN building ON room.buil_id=building.id";
               $result = mysqli_query($conn,$sql);
               if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_array($result)) {

@@ -72,7 +72,7 @@
           </thead>
           <tbody>
             <?php
-              $sql = "SELECT * FROM employee INNER JOIN position ON employee.posi_id=position.id INNER JOIN department ON employee.d_id=department.id";
+              $sql = "SELECT *, employee.id FROM employee INNER JOIN position ON employee.posi_id=position.id INNER JOIN department ON employee.d_id=department.id";
               $result = mysqli_query($conn, $sql);
               $i=1;
               if (mysqli_num_rows($result) > 0) {
