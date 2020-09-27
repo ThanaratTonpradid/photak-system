@@ -41,7 +41,8 @@
         header("location: /photak-system/pages/room.php");
       }
       else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo '<script language="javascript">alert("ไม่สามารถลบข้อมูลได้")</script>';
+        echo '<script language="javascript">window.location.pathname = "/photak-system/pages/position.php"</script>';
       }
       mysqli_close($conn);
     }

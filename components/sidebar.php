@@ -4,9 +4,22 @@
   $repairMenu = false;
   $materialMenu = false;
   $reportMenu = false;
+  $isAdmin = false;
+
+  if ($permission === 'dev') {
+    $settingMenu = true;
+    $productMenu = true;
+    $repairMenu = true;
+    $materialMenu = true;
+    $reportMenu = true;
+    $isAdmin = true;
+  }
 
   if ($permission === 'admin' || $permission === 'user') {
     $settingMenu = true;
+    if ($permission === 'admin') {
+      $isAdmin = true;
+    }
   }
   if ($permission === 'manager') {
     $productMenu = true;
@@ -22,12 +35,12 @@
           ตั้งค่าระบบ
         </a>
         <ul class="nav flex-column ml-5 collapse" id="setting-submenu" aria-labelledby="setting-menu" data-parent="#sidebarMenu">
-          <li class="nav-item<?php echo $permission !== 'admin' ? ' d-none' : ''?>">
+          <li class="nav-item<?php echo $isAdmin ? '' : ' d-none'?>">
             <a id="position-page" class="nav-link" href="/photak-system/pages/position.php">
               จัดการต่ำแหน่งผู้ใช้งาน
             </a>
           </li>
-          <li class="nav-item<?php echo $permission !== 'admin' ? ' d-none' : ''?>">
+          <li class="nav-item<?php echo $isAdmin ? '' : ' d-none'?>">
             <a id="department-page" class="nav-link" href="/photak-system/pages/department.php">
               จัดการแผนก
             </a>
@@ -37,12 +50,12 @@
               จัดการผู้ใช้งาน
             </a>
           </li>
-          <li class="nav-item<?php echo $permission !== 'admin' ? ' d-none' : ''?>">
+          <li class="nav-item<?php echo $isAdmin ? '' : ' d-none'?>">
             <a id="building-page" class="nav-link" href="/photak-system/pages/building.php">
               จัดการอาคาร
             </a>
           </li>
-          <li class="nav-item<?php echo $permission !== 'admin' ? ' d-none' : ''?>">
+          <li class="nav-item<?php echo $isAdmin ? '' : ' d-none'?>">
             <a id="room-page" class="nav-link" href="/photak-system/pages/room.php">
               จัดการห้อง
             </a>

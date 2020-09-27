@@ -46,6 +46,35 @@
   $matUseReportPage = false;
   $matWithApproveReportPage = false;
 
+  if ($permission === 'dev') {
+    $positionPage = true;
+    $departmentPage = true;
+    $employeePage = true;
+    $buildingPage = true;
+    $roomPage = true;
+
+    $matTypePage = true;
+    $matPage = true;
+    $proTypePage = true;
+    $proPage = true;
+
+    $notiRepairPage = true;
+    $approveRepairPage = true;
+    $assignRepairPage = true;
+    $finishRepairPage = true;
+
+    $matWithPage = true;
+    $matWithApprovePage = true;
+
+    $productReportPage = true;
+    $productHistoryReportPage = true;
+    $productRepairReportPage = true;
+    $productInactiveReportPage = true;
+    $matWithReportPage = true;
+    $matUseReportPage = true;
+    $matWithApproveReportPage = true;
+  }
+
   if ($permission === 'admin') {
     $positionPage = true;
     $departmentPage = true;
