@@ -222,7 +222,6 @@
     </div>
   </div>
   <?php include '../components/footer-script.php'; ?>
-  <script src="/photak-system/assets/js/mat-with-approve-script.js"></script>
 </body>
 
 </html>

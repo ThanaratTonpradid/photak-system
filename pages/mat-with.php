@@ -19,21 +19,54 @@
     <div class="row">
       <?php include '../components/sidebar.php'; ?>
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+      <?php include  '../actions/db-connection.php'; ?>
+      <?php
+        if (isset($_GET['create'])) {
+          $create = true;
+          $update = false;
+          $add_item = false;
+          $edit_item = false;
+          if (isset($_GET['add'])) {
+            $create = false;
+            $update = false;
+            $add_item = true;
+          }
+        }
+      ?>
+      <?php
+        if (isset($_GET['edit'])) {
+          $id = $_GET['edit'];
+          $update = true;
+          $add_item = false;
+          $edit_item = true;
+          $record = mysqli_query($conn, "SELECT * FROM mat_with WHERE id=$id");
+
+          if (mysqli_num_rows($record) == 1 ) {
+            $row = mysqli_fetch_array($record);
+            $em_take = $row['em_take'];
+            $date_take = date('Y-m-d',strtotime($row['date_take']));
+            $mat_with_name = $row['mat_with_name'];
+          }
+        }
+      ?>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
         <h3>รายการใบเบิกวัสดุ</h3>
-        <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-toolbar mb-2 mb-md-0 <?php if ($create || $update || $add_item) echo ' d-none'; ?>">
           <div id="search-form" class="btn-group mr-2">
             <input class="form-control" type="text" placeholder="ค้นหาใบเบิกวัสดุ" aria-label="ค้นหาใบเบิกวัสดุ">
             <button id="search-btn" type="button" class="btn btn-secondary"><span data-feather="search"></span></button>
           </div>
-          <button id="add-form-btn" type="button" class="btn btn-primary"><span data-feather="plus"></span>เพิ่มใบเบิกวัสดุ</button>
+          <a href="/photak-system/pages/mat-with.php?create" type="button" class="btn btn-primary">
+            <span data-feather="plus"></span>
+            เพิ่มใบเบิกวัสดุ
+          </a>
         </div>
       </div>
-      <div class="table-responsive">
+      <div class="table-responsive<?php if ($create || $update || $add_item || $edit_item) echo ' d-none'; ?>">
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th>ลำดับ</th>
+              <th>รหัส</th>
               <th>ผู้ขอเบิก</th>
               <th>วันที่เบิก</th>
               <th>รายการ</th>
@@ -44,308 +77,313 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>Lorem</td>
-              <td>ipsum</td>
-              <td>ipsum</td>
-              <td>ipsum</td>
-              <td>ipsum</td>
-              <td>ipsum</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></span></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMatWithDialog"><span data-feather="trash-2"></span></button>
+            <?php
+              $result = mysqli_query($conn,"SELECT * FROM mat_with");
+              if (mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_array($result)) {
+            ?>
+            <tr id="<?php echo $row["id"]; ?>">
+              <td><?php echo $row["id"]; ?></td>
+              <td><?php echo $row["em_take"]; ?></td>
+              <td><?php echo $row["date_take"]; ?></td>
+              <td><?php echo $row["mat_with_name"]; ?></td>
+              <td><?php echo $row["em_approver"]; ?></td>
+              <td><?php echo $row["date_approve"]; ?></td>
+              <td><?php echo $row["approve_mw"]; ?></td>
+              <td class="d-flex">
+                <a
+                  href="/photak-system/pages/mat-with.php?edit=<?php echo $row["id"]; ?>"
+                  type="button"
+                  class="btn btn-sm btn-info edit-btn"
+                >
+                  <span data-feather="edit-2"></span>
+                </a>
+                <form method="POST" action="/photak-system/actions/mat-with.php">
+                  <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
+                  <input type="hidden" name="type" value="delete">
+                  <button
+                    type="submit"
+                    class="btn btn-sm btn-danger"
+                    onClick="javascript: return confirm('ยืนยันการลบข้อมูล <?php echo $row["posi_name"]; ?>');"
+                  >
+                    <span data-feather="trash-2"></span>
+                  </button>
+                </form>
               </td>
             </tr>
+            <?php
+                }
+              } else {
+            ?>
             <tr>
-              <td>1,002</td>
-              <td>amet</td>
-              <td>consectetur</td>
-              <td>consectetur</td>
-              <td>consectetur</td>
-              <td>consectetur</td>
-              <td>consectetur</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></span></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMatWithDialog"><span data-feather="trash-2"></span></button>
+              <td colspan="8" class="text-center">
+                <span>ไม่พบข้อมูล</span>
               </td>
             </tr>
-            <tr>
-              <td>1,003</td>
-              <td>Integer</td>
-              <td>nec</td>
-              <td>nec</td>
-              <td>nec</td>
-              <td>nec</td>
-              <td>nec</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></span></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMatWithDialog"><span data-feather="trash-2"></span></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>libero</td>
-              <td>Sed</td>
-              <td>Sed</td>
-              <td>Sed</td>
-              <td>Sed</td>
-              <td>Sed</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></span></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMatWithDialog"><span data-feather="trash-2"></span></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,004</td>
-              <td>dapibus</td>
-              <td>diam</td>
-              <td>diam</td>
-              <td>diam</td>
-              <td>diam</td>
-              <td>diam</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></span></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMatWithDialog"><span data-feather="trash-2"></span></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,005</td>
-              <td>Nulla</td>
-              <td>quis</td>
-              <td>quis</td>
-              <td>quis</td>
-              <td>quis</td>
-              <td>quis</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></span></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMatWithDialog"><span data-feather="trash-2"></span></button>
-              </td>
-            </tr>
-            <tr>
-              <td>1,006</td>
-              <td>nibh</td>
-              <td>elementum</td>
-              <td>elementum</td>
-              <td>elementum</td>
-              <td>elementum</td>
-              <td>elementum</td>
-              <td>
-                <button type="button" class="btn btn-sm btn-info" onclick="handleEditRow()"><span data-feather="edit-2"></span></button>
-                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMatWithDialog"><span data-feather="trash-2"></span></button>
-              </td>
-            </tr>
+            <?php
+              }
+            ?>
           </tbody>
         </table>
       </div>
       <!-- Create Form -->
-      <div class="create-mat-with-form d-none">
-        <h4>เพิ่มใบเบิกวัสดุ</h4>
-        <form>
+      <div class="create-form">
+        <h4 class="<?php if (!$create) echo 'd-none'; ?>">เพิ่มใบเบิกวัสดุ</h4>
+        <h4 class="<?php if (!$add_item) echo 'd-none'; ?>">เพิ่มวัสดุ</h4>
+        <form method="POST" action="/photak-system/actions/mat-with.php" id="create" class="<?php if (!$create) echo 'd-none'; ?>">
           <div class="form-row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label for="dayStart" class="col-sm-2 col-form-label">วันที่เบิก</label>
+                <label for="mat_with_name" class="col-sm-2 col-form-label">รายการ</label>
                 <div class="col-sm-10">
-                  <input type="date" class="form-control" id="dayStart" name="dayStart" required>
+                  <input type="text" class="form-control" name="mat_with_name" required>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="matWithStaff" class="col-sm-2 col-form-label">ผู้ขอเบิก</label>
+                <label for="date_take" class="col-sm-2 col-form-label">วันที่แจ้ง</label>
                 <div class="col-sm-10">
-                  <select class="form-control" id="matWithStaff" required>
-                    <option selected disabled value="">เลือกผู้ขอเบิก/photak-system.</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <input type="date" class="form-control" name="date_take" required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="em_take" class="col-sm-2 col-form-label">ผู้ขอเบิก</label>
+                <div class="col-sm-10">
+                  <select class="form-control" name="em_take"required>
+                    <option selected disabled value="">เลือกรหัสผู้รับผิดชอบ</option>
+                    <?php
+                      $result = mysqli_query($conn,"SELECT * FROM employee");
+                      if (mysqli_num_rows($result) > 0) {
+                        while($row = mysqli_fetch_array($result)) {
+                    ?>
+                    <option value="<?php echo $row["id"]; ?>"><?php echo $row["em_fname"]; ?> <?php echo $row["em_lname"]; ?></option>
+                    <?php
+                        }
+                      }
+                    ?>
                   </select>
                 </div>
               </div>
             </div>
           </div>
+          <input type="hidden" name="type" value="create">
+          <a href="/photak-system/pages/mat-with.php" class="btn btn-secondary" type="button">ยกเลิก</a>
+          <button id="save-btn" class="btn btn-primary" type="submit" from="create">ถัดไป</button>
+        </form>
+        <form action="/photak-system/actions/mat-with-detail.php" method="POST" id="add-item" class="<?php if (!$add_item) echo 'd-none'; ?>">
           <div class="form-row">
             <div class="col">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <label class="input-group-text" for="selectMat">รายการ</label>
+                  <label class="input-group-text" for="mat_id">รายการ</label>
                 </div>
-                <select class="custom-select" id="selectMat" required>
-                  <option selected disabled value="">เลือกวัสดุคอมพิวเตอร์/photak-system.</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                <select class="custom-select" name="mat_id" required>
+                  <option selected disabled value="">เลือกวัสดุคอมพิวเตอร์</option>
+                  <?php
+                    $result = mysqli_query($conn,"SELECT * FROM material");
+                    if (mysqli_num_rows($result) > 0) {
+                      while($row = mysqli_fetch_array($result)) {
+                  ?>
+                  <option value="<?php echo $row["id"]; ?>"><?php echo $row["mat_name"]; ?></option>
+                  <?php
+                      }
+                    }
+                  ?>
                 </select>
                 <div class="input-group-prepend">
-                  <label class="input-group-text" for="matAmount">จำนวน</label>
+                  <label class="input-group-text" for="quantity">จำนวน</label>
                 </div>
-                <input type="number" class="form-control" id="matAmount" required>
+                <input type="number" class="form-control" name="quantity" required>
                 <div class="input-group-append" id="add-mat-btn">
-                  <button class="btn btn-primary" type="button"><span data-feather="plus"></span></button>
+                  <?php $mat_wit_id =(int)$_GET['add']; ?>
+                  <input type="hidden" name="mat_with_id" value="<?php echo $mat_wit_id; ?>">
+                  <input type="hidden" name="type" value="add-item">
+                  <button class="btn btn-primary" type="submit" from="add-item"><span data-feather="plus"></span></button>
                 </div>
               </div>
             </div>
           </div>
-          <div class="form-row">
-            <div class="col">
-              <table class="table table-striped table-sm">
-                <thead>
-                  <tr>
-                    <th>ลำดับ</th>
-                    <th>รายการ</th>
-                    <th>จำนวน</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>วัสดุ1</td>
-                    <td>1,234</td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMatWithDialog"><span data-feather="trash-2"></span></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>วัสดุ2</td>
-                    <td>1,234</td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMatWithDialog"><span data-feather="trash-2"></span></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>วัสดุ3</td>
-                    <td>1,234</td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMatWithDialog"><span data-feather="trash-2"></span></button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <button id="cancel-save-btn" class="btn btn-secondary" type="button">ยกเลิก</button>
-          <button id="save-btn" class="btn btn-primary" type="submit">เพิ่มข้อมูล</button>
         </form>
+        <div class="form-row<?php if (!$add_item) echo ' d-none'; ?>">
+          <div class="col">
+            <a href="/photak-system/pages/mat-with.php" class="btn btn-primary" type="button">ตกลง</a>
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>รายการ</th>
+                  <th>จำนวน</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+
+                  $result = mysqli_query($conn,"SELECT *, mat_with_detail.id FROM mat_with_detail INNER JOIN material ON mat_with_detail.mat_id=material.id WHERE mat_with_detail.mat_with_id=$mat_wit_id");
+                  if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_array($result)) {
+                ?>
+                <tr id="<?php echo $row["id"]; ?>">
+                  <td><?php echo $row["mat_name"]; ?></td>
+                  <td><?php echo $row["quantity"]; ?></td>
+                  <td class="d-flex">
+                    <form method="POST" action="/photak-system/actions/mat-with-detail.php">
+                      <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
+                      <input type="hidden" name="mat_wit_id" value="<?php echo $mat_wit_id; ?>">
+                      <input type="hidden" name="type" value="delete">
+                      <button
+                        type="submit"
+                        class="btn btn-sm btn-danger"
+                        onClick="javascript: return confirm('ยืนยันการลบข้อมูล <?php echo $row["posi_name"]; ?>');"
+                      >
+                        <span data-feather="trash-2"></span>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+                <?php
+                    }
+                  } else {
+                ?>
+                <tr>
+                  <td colspan="8" class="text-center">
+                    <span>ไม่พบข้อมูล</span>
+                  </td>
+                </tr>
+                <?php
+                  }
+                ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
       <!-- Update Form -->
-      <div class="edit-mat-with-form d-none">
+      <div class="edit-mat-with-form<?php if (!$update) echo ' d-none'; ?>">
         <h4>แก้ไขใบเบิกวัสดุ</h4>
-        <form>
+        <form method="POST" action="/photak-system/actions/mat-with.php" id="update" class="<?php if (!$update) echo 'd-none'; ?>">
           <div class="form-row">
             <div class="col-md-6">
               <div class="form-group row">
-                <label for="dayStart" class="col-sm-2 col-form-label">วันที่เบิก</label>
+                <label for="mat_with_name" class="col-sm-2 col-form-label">รายการ</label>
                 <div class="col-sm-10">
-                  <input type="date" class="form-control" id="dayStart" name="dayStart" required>
+                  <input type="text" class="form-control" name="mat_with_name" value="<?php echo $mat_with_name; ?>" required>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="matWithStaff" class="col-sm-2 col-form-label">ผู้ขอเบิก</label>
+                <label for="date_take" class="col-sm-2 col-form-label">วันที่แจ้ง</label>
                 <div class="col-sm-10">
-                  <select class="form-control" id="matWithStaff" required>
-                    <option selected disabled value="">เลือกผู้ขอเบิก/photak-system.</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <input type="date" class="form-control" name="date_take" value="<?php echo $date_take; ?>" required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="em_take" class="col-sm-2 col-form-label">ผู้ขอเบิก</label>
+                <div class="col-sm-10">
+                  <select class="form-control" name="em_take"required>
+                    <option selected value="">เลือกผู้ขอเบิก</option>
+                    <?php
+                      $result = mysqli_query($conn,"SELECT * FROM employee");
+                      if (mysqli_num_rows($result) > 0) {
+                        while($row = mysqli_fetch_array($result)) {
+                    ?>
+                    <option value="<?php echo $row["id"]; ?>" <?php if ($em_take == $row["id"]) echo 'selected="selected"'; ?>><?php echo $row["em_fname"]; ?></option>
+                    <?php
+                        }
+                      }
+                    ?>
                   </select>
                 </div>
               </div>
             </div>
           </div>
+          <input type="hidden" name="id" value="<?php echo $id; ?>">
+          <input type="hidden" name="type" value="update">
+          <a href="/photak-system/pages/mat-with.php" class="btn btn-secondary" type="button">ยกเลิก</a>
+          <button id="save-btn" class="btn btn-primary" type="submit" from="update">แก้ไขข้อมูล</button>
+        </form>
+        <form action="/photak-system/actions/mat-with-detail.php" method="POST" id="edit-item">
           <div class="form-row">
             <div class="col">
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <label class="input-group-text" for="selectMat">รายการ</label>
+                  <label class="input-group-text" for="mat_id">รายการ</label>
                 </div>
-                <select class="custom-select" id="selectMat" required>
-                  <option selected disabled value="">เลือกวัสดุคอมพิวเตอร์/photak-system.</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                <select class="custom-select" name="mat_id" required>
+                  <option selected disabled value="">เลือกวัสดุคอมพิวเตอร์</option>
+                  <?php
+                    $result = mysqli_query($conn,"SELECT * FROM material");
+                    if (mysqli_num_rows($result) > 0) {
+                      while($row = mysqli_fetch_array($result)) {
+                  ?>
+                  <option value="<?php echo $row["id"]; ?>"><?php echo $row["mat_name"]; ?></option>
+                  <?php
+                      }
+                    }
+                  ?>
                 </select>
                 <div class="input-group-prepend">
-                  <label class="input-group-text" for="matAmount">จำนวน</label>
+                  <label class="input-group-text" for="quantity">จำนวน</label>
                 </div>
-                <input type="number" class="form-control" id="matAmount" required>
+                <input type="number" class="form-control" name="quantity" required>
                 <div class="input-group-append" id="add-mat-btn">
-                  <button class="btn btn-primary" type="button"><span data-feather="plus"></span></button>
+                  <?php $mat_wit_id =(int)$_GET['edit']; ?>
+                  <input type="hidden" name="mat_with_id" value="<?php echo $mat_wit_id; ?>">
+                  <input type="hidden" name="id" value="<?php echo $id; ?>">
+                  <input type="hidden" name="type" value="edit-item">
+                  <button class="btn btn-primary" type="submit" from="edit-item"><span data-feather="plus"></span></button>
                 </div>
               </div>
             </div>
           </div>
-          <div class="form-row">
-            <div class="col">
-              <table class="table table-striped table-sm">
-                <thead>
-                  <tr>
-                    <th>ลำดับ</th>
-                    <th>รายการ</th>
-                    <th>จำนวน</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>วัสดุ1</td>
-                    <td>1,234</td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMatWithDialog"><span data-feather="trash-2"></span></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>วัสดุ2</td>
-                    <td>1,234</td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMatWithDialog"><span data-feather="trash-2"></span></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>วัสดุ3</td>
-                    <td>1,234</td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMatWithDialog"><span data-feather="trash-2"></span></button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <button id="cancel-edit-btn" class="btn btn-secondary" type="button">ยกเลิก</button>
-          <button id="edit-btn" class="btn btn-primary" type="submit">แก้ไขข้อมูล</button>
         </form>
-      </div>
+        <div class="form-row">
+          <div class="col">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>รายการ</th>
+                  <th>จำนวน</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
 
-      <!-- Delete Modal -->
-      <div class="modal fade" id="deleteMatWithDialog" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title" id="deleteMatWithDialogLabel">ยืนยันการลบข้อมูล</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ท่านต้องการลบข้อมูล /photak-system. หรือไม่
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-              <button type="button" class="btn btn-danger">ลบข้อมูล</button>
-            </div>
+                  $result = mysqli_query($conn,"SELECT *, mat_with_detail.id FROM mat_with_detail INNER JOIN material ON mat_with_detail.mat_id=material.id WHERE mat_with_detail.mat_with_id=$mat_wit_id");
+                  if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_array($result)) {
+                ?>
+                <tr id="<?php echo $row["id"]; ?>">
+                  <td><?php echo $row["mat_name"]; ?></td>
+                  <td><?php echo $row["quantity"]; ?></td>
+                  <td class="d-flex">
+                    <form method="POST" action="/photak-system/actions/mat-with-detail.php">
+                      <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
+                      <input type="hidden" name="mat_wit_id" value="<?php echo $mat_wit_id; ?>">
+                      <input type="hidden" name="table" value="edit">
+                      <input type="hidden" name="type" value="delete">
+                      <button
+                        type="submit"
+                        class="btn btn-sm btn-danger"
+                        onClick="javascript: return confirm('ยืนยันการลบข้อมูล <?php echo $row["posi_name"]; ?>');"
+                      >
+                        <span data-feather="trash-2"></span>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+                <?php
+                    }
+                  } else {
+                ?>
+                <tr>
+                  <td colspan="8" class="text-center">
+                    <span>ไม่พบข้อมูล</span>
+                  </td>
+                </tr>
+                <?php
+                  }
+                ?>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -353,7 +391,6 @@
     </div>
   </div>
   <?php include '../components/footer-script.php'; ?>
-  <script src="/photak-system/assets/js/mat-with-script.js"></script>
 </body>
 
 </html>
