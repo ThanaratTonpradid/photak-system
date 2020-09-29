@@ -1,11 +1,20 @@
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/photak-system/index.php">ORNS</a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="/photak-system/logout.php">ออกจากระบบ</a>
+  <ul class="nav px-3">
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle text-light"
+        data-toggle="dropdown"
+        href="#" role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <span data-feather="user"></span>
+        <?php echo $login_session; ?>
+      </a>
+      <div class="dropdown-menu dropdown-menu-sm-right">
+        <a class="dropdown-item" href="/photak-system/logout.php">ออกจากระบบ</a>
+      </div>
     </li>
   </ul>
 </nav>

@@ -52,7 +52,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <span class="help-block text-danger"><?php echo $error; ?></span>
     </div>
     <div class="form-group">
-      <button class="btn btn-lg btn-primary btn-block" type="submit">เข้าสู่ระบบ</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">
+        เข้าสู่ระบบ
+        <span data-feather="log-in"></span>
+      </button>
     </div>
   </form>
   <?php include './components/footer-script.php'; ?>
