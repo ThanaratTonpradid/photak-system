@@ -89,7 +89,7 @@
                 >
                   <span data-feather="edit-2"></span>แก้ไข
                 </a>
-                <form method="POST" action="/photak-system/actions/notify-repair.php" class="<?php echo !$row["nr_status"] ? '' : 'd-none'; ?>">
+                <form method="POST" action="/photak-system/actions/notify-repair.php" class="<?php echo $approveRepairPage ? '' : 'd-none'; ?>">
                   <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
                   <input type="hidden" name="type" value="delete">
                   <button

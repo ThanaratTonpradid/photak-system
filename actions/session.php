@@ -66,13 +66,13 @@
     $matWithPage = true;
     $matWithApprovePage = true;
 
-    $productReportPage = true;
-    $productHistoryReportPage = true;
-    $productRepairReportPage = true;
-    $productInactiveReportPage = true;
-    $matWithReportPage = true;
-    $matUseReportPage = true;
-    $matWithApproveReportPage = true;
+    $productReportPage = false;
+    $productHistoryReportPage = false;
+    $productRepairReportPage = false;
+    $productInactiveReportPage = false;
+    $matWithReportPage = false;
+    $matUseReportPage = false;
+    $matWithApproveReportPage = false;
   }
 
   if ($permission === 'admin') {
@@ -84,12 +84,16 @@
   }
   if ($permission === 'user') {
     $employeePage = true;
+    $notiRepairPage = true;
   }
   if ($permission === 'manager') {
     $matTypePage = true;
     $matPage = true;
     $proTypePage = true;
     $proPage = true;
+
+    $approveRepairPage = true;
+    $assignRepairPage = true;
   }
   // if ($permission === 'maintainer') {
 
