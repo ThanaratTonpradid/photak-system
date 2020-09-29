@@ -38,7 +38,7 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
         <h3>รายการใบเบิกวัสดุ</h3>
         <div class="btn-toolbar mb-2 mb-md-0<?php if ($update) echo ' d-none'; ?>">
-          <div id="search-form" class="btn-group mr-2">
+          <div id="search-form" class="btn-group mr-2 d-none">
             <input class="form-control" type="text" placeholder="ค้นหาใบเบิกวัสดุ" aria-label="ค้นหาใบเบิกวัสดุ">
             <button id="search-btn" type="button" class="btn btn-secondary"><span data-feather="search"></span></button>
           </div>
