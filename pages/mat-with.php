@@ -51,7 +51,7 @@
       ?>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
         <h3>รายการใบเบิกวัสดุ</h3>
-        <div class="btn-toolbar mb-2 mb-md-0 <?php if ($create || $update || $add_item) echo ' d-none'; ?>">
+        <div class="btn-toolbar mb-2 mb-md-0<?php if ($create || $update || $add_item) echo ' d-none'; ?>">
           <div id="search-form" class="btn-group mr-2">
             <input class="form-control" type="text" placeholder="ค้นหาใบเบิกวัสดุ" aria-label="ค้นหาใบเบิกวัสดุ">
             <button id="search-btn" type="button" class="btn btn-secondary"><span data-feather="search"></span></button>
@@ -84,21 +84,47 @@
             ?>
             <tr id="<?php echo $row["id"]; ?>">
               <td><?php echo $row["id"]; ?></td>
-              <td><?php echo $row["em_take"]; ?></td>
+              <td>
+              <?php
+                $em_id = $row["em_take"];
+                $emt_record = mysqli_query($conn, "SELECT * FROM employee WHERE id=$em_id");
+
+                if (mysqli_num_rows($emt_record) == 1 ) {
+                  $rowEm = mysqli_fetch_array($emt_record);
+                  $em_fname = $rowEm['em_fname'];
+                  $em_lname = $rowEm['em_lname'];
+                }
+                echo $em_fname." ".$em_lname;
+              ?>
+              </td>
               <td><?php echo $row["date_take"]; ?></td>
               <td><?php echo $row["mat_with_name"]; ?></td>
-              <td><?php echo $row["em_approver"]; ?></td>
+              <td>
+              <?php
+                $ema_id = $row["em_approver"];
+                if ($ema_id) {
+                  $ema_record = mysqli_query($conn, "SELECT * FROM employee WHERE id=$ema_id");
+
+                  if (mysqli_num_rows($ema_record) == 1 ) {
+                    $rowEma = mysqli_fetch_array($ema_record);
+                    $ema_fname = $rowEma['em_fname'];
+                    $ema_lname = $rowEma['em_lname'];
+                  }
+                  echo $ema_fname." ".$ema_lname;
+                }
+              ?>
+              </td>
               <td><?php echo $row["date_approve"]; ?></td>
               <td><?php echo $row["approve_mw"]; ?></td>
               <td class="d-flex">
                 <a
                   href="/photak-system/pages/mat-with.php?edit=<?php echo $row["id"]; ?>"
                   type="button"
-                  class="btn btn-sm btn-info edit-btn"
+                  class="btn btn-sm btn-info edit-btn<?php if($row["approve_mw"]) echo ' d-none'; ?>"
                 >
                   <span data-feather="edit-2"></span>
                 </a>
-                <form method="POST" action="/photak-system/actions/mat-with.php">
+                <form method="POST" action="/photak-system/actions/mat-with.php" class="<?php if($row["approve_mw"]) echo ' d-none'; ?>">
                   <input type="hidden" name="id" value="<?php echo $row["id"]; ?>">
                   <input type="hidden" name="type" value="delete">
                   <button
