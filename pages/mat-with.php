@@ -52,10 +52,17 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
         <h3>รายการใบเบิกวัสดุ</h3>
         <div class="btn-toolbar mb-2 mb-md-0<?php if ($create || $update || $add_item) echo ' d-none'; ?>">
-          <div id="search-form" class="btn-group mr-2 d-none">
-            <input class="form-control" type="text" placeholder="ค้นหาใบเบิกวัสดุ" aria-label="ค้นหาใบเบิกวัสดุ">
-            <button id="search-btn" type="button" class="btn btn-secondary"><span data-feather="search"></span></button>
-          </div>
+          <form action="/photak-system/pages/mat-with.php?search" method="GET" id="search-form">
+            <div class="btn-group mr-2">
+              <select class="custom-select" name="type">
+                <option selected value="id">รหัส</option>
+                <option value="mat_with_name">ชื่อรายการ</option>
+                <option value="approve_mw">สถานะ</option>
+              </select>
+              <input class="form-control" type="text" name="search" placeholder="ค้นหาใบเบิกวัสดุ" aria-label="ค้นหาใบเบิกวัสดุ">
+              <button id="search-btn" type="submit" class="btn btn-secondary" form="search-form"><span data-feather="search"></span></button>
+            </div>
+          </form>
           <a href="/photak-system/pages/mat-with.php?create" type="button" class="btn btn-primary">
             <span data-feather="plus"></span>
             เพิ่มใบเบิกวัสดุ
@@ -77,6 +84,83 @@
             </tr>
           </thead>
           <tbody>
+            <?php
+              if (isset($_GET['search'])) {
+                $s_type = $_GET['type'];
+                $value = $_GET['search'];
+                $s_sql = "SELECT *, mat_with.id FROM mat_with WHERE $s_type LIKE '%$value%'";
+                $s_result = mysqli_query($conn, $s_sql);
+                if (mysqli_num_rows($s_result) > 0) {
+                  while($s_row = mysqli_fetch_array($s_result)) {
+            ?>
+              <tr id="<?php echo $s_row["id"]; ?>">
+                <td><?php echo $s_row["id"]; ?></td>
+                <td>
+                <?php
+                  $em_id = $s_row["em_take"];
+                  $emt_record = mysqli_query($conn, "SELECT * FROM employee WHERE id=$em_id");
+
+                  if (mysqli_num_rows($emt_record) == 1 ) {
+                    $rowEm = mysqli_fetch_array($emt_record);
+                    $em_fname = $rowEm['em_fname'];
+                    $em_lname = $rowEm['em_lname'];
+                  }
+                  echo $em_fname." ".$em_lname;
+                ?>
+                </td>
+                <td><?php echo $s_row["date_take"]; ?></td>
+                <td><?php echo $s_row["mat_with_name"]; ?></td>
+                <td>
+                <?php
+                  $ema_id = $s_row["em_approver"];
+                  if ($ema_id) {
+                    $ema_record = mysqli_query($conn, "SELECT * FROM employee WHERE id=$ema_id");
+
+                    if (mysqli_num_rows($ema_record) == 1 ) {
+                      $rowEma = mysqli_fetch_array($ema_record);
+                      $ema_fname = $rowEma['em_fname'];
+                      $ema_lname = $rowEma['em_lname'];
+                    }
+                    echo $ema_fname." ".$ema_lname;
+                  }
+                ?>
+                </td>
+                <td><?php echo $s_row["date_approve"]; ?></td>
+                <td><?php echo $s_row["approve_mw"]; ?></td>
+                <td class="d-flex">
+                  <a
+                    href="/photak-system/pages/mat-with.php?edit=<?php echo $s_row["id"]; ?>"
+                    type="button"
+                    class="btn btn-sm btn-info edit-btn<?php if($s_row["approve_mw"]) echo ' d-none'; ?>"
+                  >
+                    <span data-feather="edit-2"></span>
+                  </a>
+                  <form method="POST" action="/photak-system/actions/mat-with.php" class="<?php if($s_row["approve_mw"]) echo ' d-none'; ?>">
+                    <input type="hidden" name="id" value="<?php echo $s_row["id"]; ?>">
+                    <input type="hidden" name="type" value="delete">
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-danger"
+                      onClick="javascript: return confirm('ยืนยันการลบข้อมูล <?php echo $s_row["posi_name"]; ?>');"
+                    >
+                      <span data-feather="trash-2"></span>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              <?php
+                  }
+                } else {
+              ?>
+              <tr>
+                <td colspan="8" class="text-center">
+                  <span>ไม่พบข้อมูล</span>
+                </td>
+              </tr>
+              <?php
+                }
+              } else {
+            ?>
             <?php
               $result = mysqli_query($conn,"SELECT * FROM mat_with");
               if (mysqli_num_rows($result) > 0) {
@@ -148,6 +232,7 @@
             </tr>
             <?php
               }
+            }
             ?>
           </tbody>
         </table>
