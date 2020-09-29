@@ -21,7 +21,8 @@
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
       <?php include  '../actions/db-connection.php'; ?>
       <?php
-        $hideButton = $permission !== 'admin' ? ' d-none' : '';
+        $hideButton = $permission === 'admin' ? '' : ' d-none';
+        $hideButton = $permission === 'dev' ? '' : ' d-none';
       ?>
       <?php
         if (isset($_GET['create'])) {

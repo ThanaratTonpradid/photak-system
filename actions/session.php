@@ -92,10 +92,18 @@
     $proTypePage = true;
     $proPage = true;
 
+    $notiRepairPage = true;
     $approveRepairPage = true;
     $assignRepairPage = true;
-  }
-  // if ($permission === 'maintainer') {
 
-  // }
+    $matWithPage = true;
+    $matWithApprovePage = true;
+  }
+  if ($permission === 'maintainer') {
+    $notiRepairPage = true;
+    $finishRepairPage = true;
+
+    $matWithPage = true;
+    $matWithApprovePage = true;
+  }
 ?>

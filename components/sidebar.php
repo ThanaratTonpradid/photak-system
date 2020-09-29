@@ -5,14 +5,20 @@
   $materialMenu = false;
   $reportMenu = false;
   $isAdmin = false;
+  $isUser = false;
+  $isManager = false;
+  $isMaintainer = false;
 
   if ($permission === 'dev') {
     $settingMenu = true;
     $productMenu = true;
     $repairMenu = true;
     $materialMenu = true;
-    $reportMenu = true;
+    $reportMenu = false;
     $isAdmin = true;
+    $isUser = true;
+    $isManager = true;
+    $isMaintainer = true;
   }
 
   if ($permission === 'admin' || $permission === 'user') {
@@ -21,8 +27,20 @@
       $isAdmin = true;
     }
   }
+  if ($permission === 'user') {
+    $repairMenu = true;
+    $isUser = true;
+  }
   if ($permission === 'manager') {
     $productMenu = true;
+    $repairMenu = true;
+    $materialMenu = true;
+    $isManager = true;
+  }
+  if ($permission === 'maintainer') {
+    $repairMenu = true;
+    $materialMenu = true;
+    $isMaintainer = true;
   }
 ?>
 
@@ -102,17 +120,17 @@
             </a>
           </li>
           <li class="nav-item">
-            <a id="approve-repair-page" class="nav-link" href="/photak-system/pages/approve-repair.php">
+            <a id="approve-repair-page" class="nav-link<?php echo $isManager ? '' : ' d-none'?>" href="/photak-system/pages/approve-repair.php">
               อนุมัติใบแจ้งซ่อม
             </a>
           </li>
           <li class="nav-item">
-            <a id="assign-repair-page" class="nav-link" href="/photak-system/pages/assign-repair.php">
+            <a id="assign-repair-page" class="nav-link<?php echo $isManager ? '' : ' d-none'?>" href="/photak-system/pages/assign-repair.php">
               กำหนดผู้รับผิดชอบใบแจ้งซ่อม
             </a>
           </li>
           <li class="nav-item">
-            <a id="finish-repair-page" class="nav-link" href="/photak-system/pages/finish-repair.php">
+            <a id="finish-repair-page" class="nav-link<?php echo $isMaintainer ? '' : ' d-none'?>" href="/photak-system/pages/finish-repair.php">
               บันทึกใบแจ้งซ่อม
             </a>
           </li>
@@ -132,49 +150,6 @@
           <li class="nav-item">
             <a id="mat-with-approve-page" class="nav-link" href="/photak-system/pages/mat-with-approve.php">
               อนุมัติใบเบิกวัสดุ
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item<?php echo $reportMenu ? '' : ' d-none'?>">
-        <a class="nav-link" id="report-menu" role="button" data-toggle="collapse" data-target="#report-submenu" aria-expanded="false" aria-controls="report-submenu">
-          <span data-feather="layers"></span>
-          ระบบรายงาน
-        </a>
-        <ul class="nav flex-column ml-5 collapse" id="report-submenu" aria-labelledby="report-menu" data-parent="#sidebarMenu">
-          <li class="nav-item">
-            <a id="product-report-page" class="nav-link" href="/photak-system/pages/product-report.php">
-              รายงานทะเบียนครุภัณฑ์
-            </a>
-          </li>
-          <li class="nav-item">
-            <a id="product-history-report-page" class="nav-link" href="/photak-system/pages/product-history-report.php">
-              รายงานประวัติครุภัณฑ์
-            </a>
-          </li>
-          <li class="nav-item">
-            <a id="product-repair-report-page" class="nav-link" href="/photak-system/pages/product-repair-report.php">
-              รายงานแจ้งซ่อมครุภัณฑ์
-            </a>
-          </li>
-          <li class="nav-item">
-            <a id="product-inactive-report-page" class="nav-link" href="/photak-system/pages/product-inactive-report.php">
-              รายงานจำหน่ายครุภัณฑ์
-            </a>
-          </li>
-          <li class="nav-item">
-            <a id="mat-with-report-page" class="nav-link" href="/photak-system/pages/mat-with-report.php">
-              รายงานการเบิกวัสดุ
-            </a>
-          </li>
-          <li class="nav-item">
-            <a id="mat-use-report-page" class="nav-link" href="/photak-system/pages/mat-use-report.php">
-              รายงานใช้วัสดุ
-            </a>
-          </li>
-          <li class="nav-item">
-            <a id="mat-with-approve-report-page" class="nav-link" href="/photak-system/pages/mat-with-approve-report.php">
-              รายงานการอนุมัติเบิกวัสดุ
             </a>
           </li>
         </ul>
