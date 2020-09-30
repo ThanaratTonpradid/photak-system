@@ -94,8 +94,36 @@
               <td><?php echo $row["em_fname"]; ?> <?php echo $row["em_lname"]; ?></td>
               <td><?php echo $row["nr_status"]; ?></td>
               <td><?php echo $row["nr_approve"]; ?></td>
-              <td><?php echo $row["em_approver"]; ?></td>
-              <td><?php echo $row["em_repair"]; ?></td>
+              <td>
+              <?php
+                if ($row["em_approver"]) {
+                  $em_id = $row["em_approver"];
+                  $emt_record = mysqli_query($conn, "SELECT * FROM employee WHERE id=$em_id");
+
+                  if (mysqli_num_rows($emt_record) == 1 ) {
+                    $rowEm = mysqli_fetch_array($emt_record);
+                    $em_fname = $rowEm['em_fname'];
+                    $em_lname = $rowEm['em_lname'];
+                  }
+                  echo $em_fname." ".$em_lname;
+                }
+              ?>
+              </td>
+              <td>
+              <?php
+                if ($row["em_repair"]) {
+                  $emr_id = $row["em_repair"];
+                  $emr_record = mysqli_query($conn, "SELECT * FROM employee WHERE id=$emr_id");
+
+                  if (mysqli_num_rows($emr_record) == 1 ) {
+                    $rowEmr = mysqli_fetch_array($emr_record);
+                    $emr_fname = $rowEmr['em_fname'];
+                    $emr_lname = $rowEmr['em_lname'];
+                  }
+                  echo $emr_fname." ".$emr_lname;
+                }
+              ?>
+              </td>
               <td><?php echo $row["nr_detail3"]; ?></td>
               <td class="d-flex">
                 <a

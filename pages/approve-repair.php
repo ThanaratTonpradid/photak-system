@@ -26,7 +26,6 @@
           $update = false;
 
           $id = $_GET['create'];
-          $update = true;
           $record = mysqli_query($conn, "SELECT * FROM notify_repair WHERE id=$id");
 
           if (mysqli_num_rows($record) == 1 ) {
@@ -88,7 +87,21 @@
               <td><?php echo $row["em_fname"]; ?> <?php echo $row["em_lname"]; ?></td>
               <td><?php echo $row["nr_status"]; ?></td>
               <td><?php echo $row["nr_approve"]; ?></td>
-              <td><?php echo $row["em_fname"]; ?> <?php echo $row["em_lname"]; ?></td>
+              <td>
+              <?php
+                if ($row["em_approver"]) {
+                  $em_id = $row["em_approver"];
+                  $emt_record = mysqli_query($conn, "SELECT * FROM employee WHERE id=$em_id");
+
+                  if (mysqli_num_rows($emt_record) == 1 ) {
+                    $rowEm = mysqli_fetch_array($emt_record);
+                    $em_fname = $rowEm['em_fname'];
+                    $em_lname = $rowEm['em_lname'];
+                  }
+                  echo $em_fname." ".$em_lname;
+                }
+              ?>
+              </td>
               <td class="d-flex">
                 <a
                   href="/photak-system/pages/approve-repair.php?edit=<?php echo $row["id"]; ?>"
