@@ -233,14 +233,15 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="em_order">ผู้แจ้ง</label>
-              <select class="form-control" name="em_order" required>
-                <option selected disabled value="">เลือกผู้แจ้ง</option>
+              <input type="hidden" class="form-control" name="em_order" value="<?php echo $user_id; ?>">
+              <select class="form-control" disabled readonly>
+                <option selected value="">เลือกผู้แจ้ง</option>
                 <?php
                   $result = mysqli_query($conn,"SELECT * FROM employee");
                   if (mysqli_num_rows($result) > 0) {
                     while($row = mysqli_fetch_array($result)) {
                 ?>
-                <option value="<?php echo $row["id"]; ?>"><?php echo $row["em_fname"]; ?></option>
+                <option value="<?php echo $user_id; ?>" <?php if ($user_id == $row["id"]) echo 'selected="selected"'; ?>><?php echo $row["em_fname"]; ?></option>
                 <?php
                     }
                   }
@@ -300,7 +301,8 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="em_order">ผู้แจ้ง</label>
-              <select class="form-control" name="em_order" required>
+              <input type="hidden" class="form-control" name="em_order" value="<?php echo $user_id; ?>">
+              <select class="form-control" disabled readonly>
                 <option selected value="">เลือกผู้แจ้ง</option>
                 <?php
                   $result = mysqli_query($conn,"SELECT * FROM employee");

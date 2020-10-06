@@ -171,7 +171,7 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="em_order">ผู้แจ้ง</label>
-              <select class="form-control" name="em_order" disable readonly>
+              <select class="form-control" name="em_order" disabled readonly>
                 <option selected value="">เลือกผู้แจ้ง</option>
                 <?php
                   $result = mysqli_query($conn,"SELECT * FROM employee");
