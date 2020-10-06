@@ -5,7 +5,7 @@
       $id=$_POST['id'];
       $nr_detail3=$_POST['nr_detail3'];
       $nr_successfull=$_POST['nr_successfull'];
-      $nr_status='complete';
+      $nr_status='สำเร็จ';
       $sql = "UPDATE `notify_repair` SET `nr_detail3`='$nr_detail3',`nr_successfull`='$nr_successfull',`nr_status`='$nr_status' WHERE id=$id";
       if (mysqli_query($conn, $sql)) {
         header("location: /photak-system/pages/finish-repair.php");
@@ -22,7 +22,7 @@
       $id=$_POST['id'];
       $nr_detail3=$_POST['nr_detail3'];
       $nr_successfull=$_POST['nr_successfull'];
-      $nr_status='complete';
+      $nr_status='สำเร็จ';
       $sql = "UPDATE `notify_repair` SET `nr_detail3`='$nr_detail3',`nr_successfull`='$nr_successfull',`nr_status`='$nr_status' WHERE id=$id";
       if (mysqli_query($conn, $sql)) {
         header("location: /photak-system/pages/finish-repair.php");

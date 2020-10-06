@@ -5,7 +5,7 @@
       $id=$_POST['id'];
 
       $em_repair=(int)$_POST['em_repair'];
-      $nr_status='repairing';
+      $nr_status='กำลังซ่อม';
       $sql = "UPDATE `notify_repair` SET `em_repair`='$em_repair',`nr_status`='$nr_status' WHERE id=$id";
       if (mysqli_query($conn, $sql)) {
         header("location: /photak-system/pages/assign-repair.php");
@@ -21,7 +21,7 @@
     if($_POST['type']=='update'){
       $id=$_POST['id'];
       $em_repair=(int)$_POST['em_repair'];
-      $nr_status='repairing';
+      $nr_status='กำลังซ่อม';
 
       $sql = "UPDATE `notify_repair` SET `em_repair`='$em_repair',`nr_status`='$nr_status' WHERE id=$id";
       if (mysqli_query($conn, $sql)) {

@@ -5,9 +5,9 @@
       $id=$_POST['id'];
       $nr_approve=$_POST['nr_approve'];
       $em_approver=(int)$_POST['em_approver'];
-      $nr_status='waiting';
-      if ($nr_approve == 'notApprove') {
-        $nr_status='cancel';
+      $nr_status='รอซ่อม';
+      if ($nr_approve == 'ไม่อนุมัติ') {
+        $nr_status='ยกเลิก';
       }
       $sql = "UPDATE `notify_repair` SET `nr_approve`='$nr_approve',`em_approver`='$em_approver',`nr_status`='$nr_status' WHERE id=$id";
       if (mysqli_query($conn, $sql)) {
@@ -25,9 +25,9 @@
       $id=$_POST['id'];
       $nr_approve=$_POST['nr_approve'];
       $em_approver=(int)$_POST['em_approver'];
-      $nr_status='waiting';
-      if ($nr_approve == 'notApprove') {
-        $nr_status='cancel';
+      $nr_status='รอซ่อม';
+      if ($nr_approve == 'ไม่อนุมัติ') {
+        $nr_status='ยกเลิก';
       }
 
       $sql = "UPDATE `notify_repair` SET `nr_approve`='$nr_approve',`em_approver`='$em_approver',`nr_status`='$nr_status' WHERE id=$id";

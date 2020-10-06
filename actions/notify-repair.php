@@ -7,7 +7,7 @@
       $nr_detail1=$_POST['nr_detail1'];
       $em_order=(int)$_POST['em_order'];
       $nr_images=$_POST['nr_images'];
-      $nr_status='pending';
+      $nr_status='รออนุมัติ';
       $sql = "INSERT INTO `notify_repair`(`p_id`,`nr_datenotifi`,`nr_detail1`,`em_order`,`nr_images`, `nr_status`) VALUES ( '$p_id','$nr_datenotifi','$nr_detail1','$em_order','$nr_images','$nr_status')";
       if (mysqli_query($conn, $sql)) {
         header("location: /photak-system/pages/notify-repair.php");

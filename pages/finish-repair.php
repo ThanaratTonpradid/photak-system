@@ -136,7 +136,7 @@
                 <a
                   href="/photak-system/pages/finish-repair.php?create=<?php echo $row["id"]; ?>"
                   type="button"
-                  class="btn btn-sm btn-primary edit-btn<?php echo $row['nr_status'] !== 'complete' ? '' : ' d-none';?>"
+                  class="btn btn-sm btn-primary edit-btn<?php echo $row['nr_status'] !== 'สำเร็จ' ? '' : ' d-none';?>"
                 >
                   <span data-feather="check"></span>บันทึกการซ่อม
                 </a>
@@ -212,11 +212,11 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="nr_approve" value="approve" <?php if ($nr_approve == 'approve') echo 'checked="checked"' ?> disabled readonly>
+                <input class="form-check-input" type="radio" name="nr_approve" value="อนุมัติ" <?php if ($nr_approve == 'อนุมัติ') echo 'checked="checked"' ?> disabled readonly>
                 <label class="form-check-label" for="nr_approve">อนุมัติ</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="nr_approve" value="notApprove" <?php if ($nr_approve == 'notApprove') echo 'checked="checked"' ?> disabled readonly>
+                <input class="form-check-input" type="radio" name="nr_approve" value="ไม่อนุมัติ" <?php if ($nr_approve == 'ไม่อนุมัติ') echo 'checked="checked"' ?> disabled readonly>
                 <label class="form-check-label" for="nr_approve">ไม่อนุมัติ</label>
               </div>
             </div>
@@ -330,11 +330,11 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="nr_approve" value="approve" <?php if ($nr_approve == 'approve') echo 'checked="checked"' ?> disabled readonly>
+                <input class="form-check-input" type="radio" name="nr_approve" value="อนุมัติ" <?php if ($nr_approve == 'อนุมัติ') echo 'checked="checked"' ?> disabled readonly>
                 <label class="form-check-label" for="nr_approve">อนุมัติ</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="nr_approve" value="notApprove" <?php if ($nr_approve == 'notApprove') echo 'checked="checked"' ?> disabled readonly>
+                <input class="form-check-input" type="radio" name="nr_approve" value="ไม่อนุมัติ" <?php if ($nr_approve == 'ไม่อนุมัติ') echo 'checked="checked"' ?> disabled readonly>
                 <label class="form-check-label" for="nr_approve">ไม่อนุมัติ</label>
               </div>
             </div>

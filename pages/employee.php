@@ -192,11 +192,11 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="em_status" value="active" checked="checked" required>
+                <input class="form-check-input" type="radio" name="em_status" value="ปฏิบัติหน้าที่" checked="checked" required>
                 <label class="form-check-label" for="em_status">ยังปฏิบัติหน้าที่</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="em_status" value="inactive" required>
+                <input class="form-check-input" type="radio" name="em_status" value="ไม่ปฏิบัติหน้าที่" required>
                 <label class="form-check-label" for="em_status">ไม่ปฏิบัติหน้าที่</label>
               </div>
             </div>
@@ -286,11 +286,11 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="em_status" value="active" <?php if ($em_status == 'active') echo 'checked="checked"' ?> required>
+                <input class="form-check-input" type="radio" name="em_status" value="ปฏิบัติหน้าที่" <?php if ($em_status == 'ปฏิบัติหน้าที่') echo 'checked="checked"' ?> required>
                 <label class="form-check-label" for="em_status">ยังปฏิบัติหน้าที่</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="em_status" value="inactive" <?php if ($em_status == 'inactive') echo 'checked="checked"' ?> required>
+                <input class="form-check-input" type="radio" name="em_status" value="ไม่ปฏิบัติหน้าที่" <?php if ($em_status == 'ไม่ปฏิบัติหน้าที่') echo 'checked="checked"' ?> required>
                 <label class="form-check-label" for="em_status">ไม่ปฏิบัติหน้าที่</label>
               </div>
             </div>

@@ -249,11 +249,11 @@
                 <label for="matWithStatus" class="col-sm-2 col-form-label">สถานะใบเบิก</label>
                 <div class="col-sm-10">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="approve_mw" id="radio1" value="approve" required>
+                    <input class="form-check-input" type="radio" name="approve_mw" id="radio1" value="อนุมัติ" required>
                     <label class="form-check-label" for="radio1">อนุมัติ</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="approve_mw" id="radio2" value="notApprove" required>
+                    <input class="form-check-input" type="radio" name="approve_mw" id="radio2" value="ไม่อนุมัติ" required>
                     <label class="form-check-label" for="radio2">ไม่อนุมัติ</label>
                   </div>
                 </div>

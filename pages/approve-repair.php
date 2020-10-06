@@ -189,11 +189,11 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="nr_approve" id="radio1" value="approve" required>
+                <input class="form-check-input" type="radio" name="nr_approve" id="radio1" value="อนุมัติ" required>
                 <label class="form-check-label" for="radio1">อนุมัติ</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="nr_approve" id="radio2" value="notApprove" required>
+                <input class="form-check-input" type="radio" name="nr_approve" id="radio2" value="ไม่อนุมัติ" required>
                 <label class="form-check-label" for="radio2">ไม่อนุมัติ</label>
               </div>
             </div>
@@ -277,11 +277,11 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="nr_approve" value="approve" <?php if ($nr_approve == 'approve') echo 'checked="checked"' ?> required>
+                <input class="form-check-input" type="radio" name="nr_approve" value="อนุมัติ" <?php if ($nr_approve == 'อนุมัติ') echo 'checked="checked"' ?> required>
                 <label class="form-check-label" for="nr_approve">อนุมัติ</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="nr_approve" value="notApprove" <?php if ($nr_approve == 'notApprove') echo 'checked="checked"' ?> required>
+                <input class="form-check-input" type="radio" name="nr_approve" value="ไม่อนุมัติ" <?php if ($nr_approve == 'ไม่อนุมัติ') echo 'checked="checked"' ?> required>
                 <label class="form-check-label" for="nr_approve">ไม่อนุมัติ</label>
               </div>
             </div>

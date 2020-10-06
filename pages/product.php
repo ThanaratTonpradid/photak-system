@@ -234,11 +234,11 @@
               <label class="pt-0">สถานะ</label>
               <div class="d-flex">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="p_status" value="active" checked="checked" required>
+                  <input class="form-check-input" type="radio" name="p_status" value="ใช้งาน" checked="checked" required>
                   <label class="form-check-label" for="statusRadio1">ใช้งาน</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="p_status" value="inactive" required>
+                  <input class="form-check-input" type="radio" name="p_status" value="จำหน่ายออก" required>
                   <label class="form-check-label" for="statusRadio2">จำหน่ายออก</label>
                 </div>
               </div>
@@ -364,11 +364,11 @@
               <label class="pt-0">สถานะ</label>
               <div class="d-flex">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="p_status" value="active" <?php if ($p_status == 'active') echo 'checked="checked"' ?> required>
+                  <input class="form-check-input" type="radio" name="p_status" value="ใช้งาน" <?php if ($p_status == 'ใช้งาน') echo 'checked="checked"' ?> required>
                   <label class="form-check-label" for="statusRadio1">ใช้งาน</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="p_status" value="inactive" <?php if ($p_status == 'inactive') echo 'checked="checked"' ?> required>
+                  <input class="form-check-input" type="radio" name="p_status" value="จำหน่ายออก" <?php if ($p_status == 'จำหน่ายออก') echo 'checked="checked"' ?> required>
                   <label class="form-check-label" for="statusRadio2">จำหน่ายออก</label>
                 </div>
               </div>
