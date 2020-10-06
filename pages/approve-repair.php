@@ -33,8 +33,11 @@
             $p_id = $row['p_id'];
             $nr_datenotifi = date('Y-m-d',strtotime($row['nr_datenotifi']));
             $nr_detail1 = $row['nr_detail1'];
-            $em_order = $row['em_order'];
             $nr_images = $row['nr_images'];
+            $em_order = $row['em_order'];
+            $em_approver = $row['em_approver'];
+            $nr_approve = $row['nr_approve'];
+            $em_repair = $row['em_repair'];
           }
         }
       ?>
@@ -52,6 +55,7 @@
             $em_order = $row['em_order'];
             $nr_approve = $row['nr_approve'];
             $em_approver = $row['em_approver'];
+            $em_repair = $row['em_repair'];
           }
         }
       ?>
@@ -70,6 +74,7 @@
               <th>สถานะการซ่อม</th>
               <th>ผลการอนุมัติ</th>
               <th>ผู้อนุมัติ</th>
+              <th>ผู้รับผิดชอบ</th>
               <th></th>
             </tr>
           </thead>
@@ -102,6 +107,21 @@
                 }
               ?>
               </td>
+              <td>
+              <?php
+                if ($row["em_repair"]) {
+                  $emr_id = $row["em_repair"];
+                  $emr_record = mysqli_query($conn, "SELECT * FROM employee WHERE id=$emr_id");
+
+                  if (mysqli_num_rows($emr_record) == 1 ) {
+                    $rowEmr = mysqli_fetch_array($emr_record);
+                    $emr_fname = $rowEmr['em_fname'];
+                    $emr_lname = $rowEmr['em_lname'];
+                  }
+                  echo $emr_fname." ".$emr_lname;
+                }
+              ?>
+              </td>
               <td class="d-flex">
                 <a
                   href="/photak-system/pages/approve-repair.php?edit=<?php echo $row["id"]; ?>"
@@ -124,7 +144,7 @@
               } else {
             ?>
             <tr>
-              <td colspan="9" class="text-center">
+              <td colspan="10" class="text-center">
                 <span>ไม่พบข้อมูล</span>
               </td>
             </tr>
@@ -205,6 +225,24 @@
                 <option selected disabled value="">เลือกผู้อนุมัติ</option>
                 <?php
                   $result = mysqli_query($conn,"SELECT * FROM employee");
+                  if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_array($result)) {
+                ?>
+                <option value="<?php echo $row["id"]; ?>"><?php echo $row["em_fname"]; ?></option>
+                <?php
+                    }
+                  }
+                ?>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="em_repair">กำหนดผู้รับผิดชอบ</label>
+              <select class="form-control" name="em_repair" required>
+                <option selected disabled value="">เลือกผู้รับผิดชอบ</option>
+                <?php
+                  $result = mysqli_query($conn,"SELECT * FROM employee WHERE em_group='maintainer'");
                   if (mysqli_num_rows($result) > 0) {
                     while($row = mysqli_fetch_array($result)) {
                 ?>
@@ -297,6 +335,24 @@
                     while($row = mysqli_fetch_array($result)) {
                 ?>
                 <option value="<?php echo $row["id"]; ?>" <?php if ($em_approver == $row["id"]) echo 'selected="selected"'; ?>><?php echo $row["em_fname"]; ?></option>
+                <?php
+                    }
+                  }
+                ?>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="em_repair">กำหนดผู้รับผิดชอบ</label>
+              <select class="form-control" name="em_repair" required>
+                <option selected value="">เลือกผู้รับผิดชอบ</option>
+                <?php
+                  $result = mysqli_query($conn,"SELECT * FROM employee WHERE em_group='maintainer'");
+                  if (mysqli_num_rows($result) > 0) {
+                    while($row = mysqli_fetch_array($result)) {
+                ?>
+                <option value="<?php echo $row["id"]; ?>" <?php if ($em_repair == $row["id"]) echo 'selected="selected"'; ?>><?php echo $row["em_fname"]; ?></option>
                 <?php
                     }
                   }
