@@ -41,9 +41,6 @@ $(function() {
   } else if (pathname === '/photak-system/pages/approve-repair.php') {
     $('#approve-repair-page').addClass('active')
     $('#repair-submenu').collapse('show')
-  } else if (pathname === '/photak-system/pages/assign-repair.php') {
-    $('#assign-repair-page').addClass('active')
-    $('#repair-submenu').collapse('show')
   } else if (pathname === '/photak-system/pages/finish-repair.php') {
     $('#finish-repair-page').addClass('active')
     $('#repair-submenu').collapse('show')

@@ -125,11 +125,6 @@
             </a>
           </li>
           <li class="nav-item">
-            <a id="assign-repair-page" class="nav-link<?php echo $isManager ? '' : ' d-none'?>" href="/photak-system/pages/assign-repair.php">
-              กำหนดผู้รับผิดชอบใบแจ้งซ่อม
-            </a>
-          </li>
-          <li class="nav-item">
             <a id="finish-repair-page" class="nav-link<?php echo $isMaintainer ? '' : ' d-none'?>" href="/photak-system/pages/finish-repair.php">
               บันทึกใบแจ้งซ่อม
             </a>
