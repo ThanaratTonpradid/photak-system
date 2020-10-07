@@ -9,6 +9,20 @@
         aria-haspopup="true"
         aria-expanded="false"
       >
+        ยินดีต้อนรับ <?php echo $user_fname.' '.$user_lname; ?>
+        สิทธิ์ <?php
+          if ($permission === 'dev') {
+            echo 'นักพัฒนา';
+          } else if ($permission === 'admin') {
+            echo 'ผู้ดูแลระบบ';
+          } else if ($permission === 'manager'){
+            echo 'หัวหน้างาน';
+          } else if ($permission === 'maintainer'){
+            echo 'ช่างซ่อม';
+          } else {
+            echo 'ผู้ใช้';
+          }
+        ?>
         <span data-feather="user"></span>
         <?php echo $login_session; ?>
       </a>

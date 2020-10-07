@@ -21,8 +21,11 @@
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
       <?php include  '../actions/db-connection.php'; ?>
       <?php
-        $hideButton = $permission === 'admin' ? '' : ' d-none';
-        $hideButton = $permission === 'dev' ? '' : ' d-none';
+        if ($permission === 'admin' || $permission === 'dev' ) {
+          $hideButton = '';
+        } else {
+          $hideButton = ' d-none';
+        }
       ?>
       <?php
         if (isset($_GET['create'])) {
@@ -66,14 +69,13 @@
               <th>ต่ำแหน่ง</th>
               <th>แผนก</th>
               <th>ชื่อเข้าใช้งาน</th>
-              <th>รหัสผ่าน</th>
               <th>สถานะ</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             <?php
-              $sql = "SELECT *, employee.id FROM employee INNER JOIN position ON employee.posi_id=position.id INNER JOIN department ON employee.d_id=department.id";
+              $sql = "SELECT *, employee.id FROM employee INNER JOIN position ON employee.posi_id=position.id INNER JOIN department ON employee.d_id=department.id WHERE employee.id=$user_id";
               $result = mysqli_query($conn, $sql);
               $i=1;
               if (mysqli_num_rows($result) > 0) {
@@ -86,7 +88,6 @@
               <td><?php echo $row["posi_name"]; ?></td>
               <td><?php echo $row["d_name"]; ?></td>
               <td><?php echo $row["em_user"]; ?></td>
-              <td><?php echo $row["em_pass"]; ?></td>
               <td><?php echo $row["em_status"]; ?></td>
               <td class="d-flex">
                 <a
@@ -186,7 +187,7 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="em_pass">password</label>
-              <input type="text" class="form-control" name="em_pass" required>
+              <input type="password" class="form-control" name="em_pass" required>
             </div>
           </div>
           <div class="form-row">
@@ -280,7 +281,7 @@
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="em_pass">password</label>
-              <input type="text" class="form-control" name="em_pass" value="<?php echo $em_pass; ?>" required>
+              <input type="password" class="form-control" name="em_pass" value="<?php echo $em_pass; ?>" required>
             </div>
           </div>
           <div class="form-row">
